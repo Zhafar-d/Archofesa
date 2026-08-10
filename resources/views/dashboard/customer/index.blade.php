@@ -167,28 +167,78 @@
             </div>
         </section>
 
-        <section id="rooms" class="rounded-[32px] border border-[#e7e2d8] bg-white p-6 shadow-[0_16px_50px_-32px_rgba(15,23,42,0.14)] sm:p-8">
-            <div class="flex items-end justify-between gap-4">
+        <section id="rooms" class="rounded-3xl border border-[#e7e2d8] bg-white p-6 shadow-sm sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-100 pb-5">
                 <div>
-                    <p class="text-sm font-semibold uppercase tracking-[0.24em] text-[#c9a227]">Kamar</p>
-                    <h2 class="mt-2 text-2xl font-semibold text-[#1f2937]">Kamar tersedia untuk masa tinggal Anda berikutnya.</h2>
+                    <p class="text-xs font-bold uppercase tracking-[0.24em] text-[#c9a227]">Pilihan Kamar</p>
+                    <h2 class="mt-1 text-2xl font-bold text-slate-900">Tipe Kamar Utama</h2>
                 </div>
+                <a href="{{ route('customer.rooms') }}" class="inline-flex items-center gap-2 text-sm font-bold text-[#c9a227] hover:text-[#b68d1f]">
+                    Lihat Semua Kamar ({{ $totalRooms ?? 18 }})
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
             </div>
-            <div class="mt-8 grid gap-6">
-                <div class="overflow-hidden rounded-[28px] border border-[#e7e2d8] bg-[#faf8f5]">
-                    <img src="{{ $firstRoomImage ?? '' }}" alt="Kamar Mahasiswa" class="h-56 w-full object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between gap-4">
-                            <div>
-                                <h3 class="text-xl font-semibold text-[#1f2937]">Kamar Mahasiswa</h3>
-                                <p class="mt-1 text-sm text-[#6b7280]">{{ $availableRooms }} kamar tersedia</p>
-                            </div>
-                            <span class="rounded-full border border-[#e7e2d8] bg-white px-3 py-1 text-sm font-semibold text-[#374151]">Tersedia</span>
+
+            <div class="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-[#faf8f5] shadow-sm transition hover:shadow-md">
+                <div class="grid md:grid-cols-12">
+                    {{-- Room Image with Badge --}}
+                    <div class="relative md:col-span-5 min-h-[220px] md:min-h-full">
+                        <img src="{{ $firstRoomImage ?? '' }}" alt="Kamar Mahasiswa" class="h-full w-full object-cover">
+                        <div class="absolute top-4 left-4 flex items-center gap-2">
+                            <span class="rounded-full bg-emerald-600/90 backdrop-blur px-3 py-1 text-xs font-bold text-white shadow-sm">
+                                ✓ {{ $availableRooms }} Kamar Tersedia
+                            </span>
                         </div>
-                        <p class="mt-4 text-sm leading-7 text-[#4b5563]">Kos mahasiswa dengan fasilitas lengkap, semua kamar sama dan sewa per bulan Rp1.400.000.</p>
-                        <div class="mt-5 flex items-center justify-between">
-                            <p class="text-2xl font-semibold text-[#1f2937]">Rp{{ number_format($roomPrice, 0, ',', '.') }}</p>
-                            <a href="{{ route('customer.rooms') }}" class="rounded-full bg-[#c9a227] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#b68d1f]">Lihat Detail</a>
+                    </div>
+
+                    {{-- Room Details --}}
+                    <div class="flex flex-col justify-between p-6 md:col-span-7 sm:p-7">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-2xl font-bold text-slate-900">Kamar Standard Mahasiswa</h3>
+                                <span class="rounded-lg bg-[#c9a227]/10 px-3 py-1 text-xs font-bold text-[#c9a227] border border-[#c9a227]/20">
+                                    Ukuran {{ $roomSize ?? '3 x 4 m' }}
+                                </span>
+                            </div>
+
+                            <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                                Kamar nyaman siap huni khusus mahasiswa & pekerja dengan fasilitas lengkap. Suasana tenang untuk belajar dan beristirahat.
+                            </p>
+
+                            {{-- Spec Badges --}}
+                            <div class="mt-5 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                                    🛏️ Kasur & Lemari
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                                    🚿 KM Dalam
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                                    ⚡ Listrik & Air
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
+                                    📶 WiFi Gratis
+                                </span>
+                            </div>
+                        </div>
+
+                        {{-- Price & CTA --}}
+                        <div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/80 pt-5">
+                            <div>
+                                <p class="text-xs text-slate-400 font-medium">Harga Sewa Bulanan</p>
+                                <p class="text-2xl font-extrabold text-slate-900">
+                                    Rp{{ number_format($roomPrice, 0, ',', '.') }}
+                                    <span class="text-xs font-normal text-slate-500">/ bulan</span>
+                                </p>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <a href="{{ route('customer.rooms') }}" 
+                                   class="inline-flex items-center gap-2 rounded-xl bg-[#c9a227] px-6 py-3 text-sm font-bold text-white shadow-md shadow-[#c9a227]/20 transition hover:bg-[#b68d1f] active:scale-[0.98]">
+                                    Pilih Kamar
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
