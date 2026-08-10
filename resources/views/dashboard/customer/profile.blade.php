@@ -9,6 +9,12 @@
         <p class="mt-2 text-slate-600">Kelola akun dan preferensi Anda</p>
     </div>
 
+    @if (session('status') === 'profile-updated')
+        <div class="mb-6 rounded-lg bg-emerald-50 border border-emerald-200 p-4 text-sm font-semibold text-emerald-800">
+            ✓ Profil berhasil diperbarui.
+        </div>
+    @endif
+
     <div class="grid gap-6 lg:grid-cols-3">
         <x-dashboard.section title="Foto Profil">
             <div class="space-y-4">
