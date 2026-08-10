@@ -15,25 +15,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'role' => 'user',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            [
+                'name' => 'Test User',
+                'role' => 'user',
+                'password' => bcrypt('password'),
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@archofesa.test',
-            'password' => 'admin12345', // plain text — cast 'hashed' di model yang handle
-            'role' => 'admin',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@archofesa.test'],
+            [
+                'name' => 'Admin User',
+                'password' => 'admin12345',
+                'role' => 'admin',
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Owner User',
-            'email' => 'owner@archofesa.test',
-            'password' => 'owner12345', // plain text — cast 'hashed' di model yang handle
-            'role' => 'owner',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'owner@archofesa.test'],
+            [
+                'name' => 'Owner User',
+                'password' => 'owner12345',
+                'role' => 'owner',
+            ]
+        );
 
         $this->call([
             RoomSeeder::class,

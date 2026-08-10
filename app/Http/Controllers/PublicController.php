@@ -31,7 +31,8 @@ class PublicController extends Controller
             ['label' => 'Rata-rata Tinggal', 'value' => $avgStayMonths > 0 ? $avgStayMonths . ' bulan' : '-', 'detail' => 'Rata-rata durasi tinggal'],
         ];
 
-        $minPrice      = Room::min('price_monthly');
+        $rawMinPrice   = Room::min('price_monthly');
+        $minPrice      = ($rawMinPrice && $rawMinPrice < 10000) ? $rawMinPrice * 1000 : ($rawMinPrice ?: 1400000);
         $roomTypeCount = Room::select('price_monthly')->distinct()->count();
 
         $facilities = [

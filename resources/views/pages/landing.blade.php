@@ -45,7 +45,7 @@
             <div class="mt-5 grid gap-3 sm:grid-cols-3">
                 <div class="rounded-2xl border border-[#e7e2d8] bg-[#faf8f5] p-4">
                     <p class="text-sm text-[#6b7280]">Mulai dari</p>
-                    <p class="mt-2 text-xl font-semibold text-[#1f2937]">Rp{{ number_format($minPrice / 1000, 0, ',', '.') }}rb</p>
+                    <p class="mt-2 text-xl font-semibold text-[#1f2937]">Rp{{ number_format($minPrice, 0, ',', '.') }}</p>
                 </div>
                 <div class="rounded-2xl border border-[#e7e2d8] bg-[#faf8f5] p-4">
                     <p class="text-sm text-[#6b7280]">Kepuasan</p>

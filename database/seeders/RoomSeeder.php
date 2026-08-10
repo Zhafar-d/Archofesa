@@ -27,12 +27,12 @@ class RoomSeeder extends Seeder
             $existing = Room::where('room_code', $roomCode)->first();
 
             if ($existing) {
-                // Jangan timpa image_url kalau sudah ada foto
                 $existing->update([
                     'size'          => '3x4m',
                     'price_monthly' => 1400000,
                     'status'        => $i <= 14 ? 'available' : 'occupied',
                     'description'   => 'Kamar kos mahasiswa, semua spesifikasi sama, nyaman untuk belajar dan istirahat.',
+                    'image_url'     => $existing->image_url ?: $imageUrl,
                 ]);
             } else {
                 Room::create([

@@ -11,6 +11,16 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <script>
+            window.firebaseConfig = {
+                apiKey: "{{ env('FIREBASE_API_KEY', env('VITE_FIREBASE_API_KEY')) }}",
+                authDomain: "{{ env('FIREBASE_AUTH_DOMAIN', env('VITE_FIREBASE_AUTH_DOMAIN')) }}",
+                projectId: "{{ env('FIREBASE_PROJECT_ID', env('VITE_FIREBASE_PROJECT_ID')) }}",
+                storageBucket: "{{ env('FIREBASE_STORAGE_BUCKET', env('VITE_FIREBASE_STORAGE_BUCKET')) }}",
+                messagingSenderId: "{{ env('FIREBASE_MESSAGING_SENDER_ID', env('VITE_FIREBASE_MESSAGING_SENDER_ID')) }}",
+                appId: "{{ env('FIREBASE_APP_ID', env('VITE_FIREBASE_APP_ID')) }}"
+            };
+        </script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')
