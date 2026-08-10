@@ -1,10 +1,9 @@
 <header class="sticky top-0 z-40 border-b border-[#e7e2d8] bg-white/90 px-4 py-4 backdrop-blur sm:px-6 lg:px-8">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4">
-        <a href="{{ route('customer.dashboard') }}" class="flex items-center gap-3">
-            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c9a227] text-lg font-semibold text-white shadow-lg shadow-[#c9a227]/20">A</div>
+        <a href="{{ route('customer.dashboard') }}" class="flex items-center gap-2">
             <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-[#c9a227]">ARCHOFESA</p>
-                <p class="text-sm text-[#6b7280]">KOST</p>
+                <p class="text-base font-bold tracking-[0.2em] text-[#c9a227]">ARCHOFESA</p>
+                <p class="text-xs font-semibold tracking-wider text-[#6b7280]">KOST</p>
             </div>
         </a>
 

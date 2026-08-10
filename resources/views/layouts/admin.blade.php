@@ -19,11 +19,10 @@
     {{-- ── Sidebar ── --}}
     <aside class="sticky top-0 h-screen w-72 shrink-0 overflow-y-auto border-r border-[#e7e2d8] bg-white">
         {{-- Logo --}}
-        <div class="flex items-center gap-3 border-b border-[#e7e2d8] px-7 py-6">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c9a227] text-lg font-bold text-white shadow">A</div>
+        <div class="flex items-center gap-2 border-b border-[#e7e2d8] px-7 py-6">
             <div>
-                <p class="text-sm font-bold uppercase tracking-widest text-[#c9a227]">ARCHOFESA</p>
-                <p class="text-xs text-[#6b7280]">Admin Panel</p>
+                <p class="text-base font-bold tracking-[0.2em] text-[#c9a227]">ARCHOFESA</p>
+                <p class="text-xs font-semibold tracking-wider text-[#6b7280]">Admin Panel</p>
             </div>
         </div>
 

@@ -21,8 +21,7 @@
 
         {{-- Header --}}
         <div class="flex items-center justify-between border-b border-[#e7e2d8] pb-6">
-            <div class="flex items-center gap-3">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c9a227] text-xl font-bold text-white">A</div>
+            <div class="flex items-center gap-2">
                 <div>
                     <p class="font-bold uppercase tracking-widest text-[#c9a227]">ARCHOFESA KOST</p>
                     <p class="text-xs text-[#6b7280]">Pedurungan, Semarang, Jawa Tengah</p>
