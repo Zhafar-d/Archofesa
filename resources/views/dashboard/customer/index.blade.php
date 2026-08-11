@@ -208,16 +208,16 @@
                             {{-- Spec Badges --}}
                             <div class="mt-5 flex flex-wrap gap-2">
                                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
-                                    🛏️ Kasur & Lemari
+                                    Kasur & Lemari
                                 </span>
                                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
-                                    🚿 KM Dalam
+                                     KM Dalam
                                 </span>
                                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
-                                    ⚡ Listrik & Air
+                                     Listrik & Air
                                 </span>
                                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs">
-                                    📶 WiFi Gratis
+                                         WiFi Gratis
                                 </span>
                             </div>
                         </div>

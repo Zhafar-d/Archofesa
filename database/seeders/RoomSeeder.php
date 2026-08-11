@@ -32,7 +32,7 @@ class RoomSeeder extends Seeder
                     'price_monthly' => 1400000,
                     'status'        => $i <= 14 ? 'available' : 'occupied',
                     'description'   => 'Kamar kos mahasiswa, semua spesifikasi sama, nyaman untuk belajar dan istirahat.',
-                    'image_url'     => $existing->image_url ?: $imageUrl,
+                    'image_url'     => $imageUrl ?: $existing->image_url,
                 ]);
             } else {
                 Room::create([

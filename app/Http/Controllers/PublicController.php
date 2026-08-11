@@ -98,13 +98,33 @@ class PublicController extends Controller
 
     public function gallery()
     {
-        $images = Room::all()->flatMap(fn ($r) => $r->all_images)->unique()->take(24)->values()->toArray();
-        if (empty($images)) {
-            $images = collect(Storage::disk('public')->files('rooms'))
-                ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
-                ->map(fn ($f) => Storage::disk('public')->url($f))
-                ->values()->take(24)->toArray();
-        }
+        // Prioritas 1: image_urls (JSON array multi-foto) dari DB
+        $fromMulti = Room::all()->flatMap(function ($r) {
+            $raw = $r->getRawOriginal('image_urls');
+            if (empty($raw)) return [];
+            $decoded = json_decode($raw, true);
+            return is_array($decoded) ? $decoded : [];
+        })->filter()->values()->toArray();
+
+        // Prioritas 2: image_url (single) dari DB — raw tanpa accessor
+        $fromSingle = Room::all()->map(function ($r) {
+            return $r->getRawOriginal('image_url');
+        })->filter()->unique()->values()->toArray();
+
+        // Prioritas 3: semua file langsung dari storage/rooms
+        $fromStorage = collect(Storage::disk('public')->files('rooms'))
+            ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
+            ->map(fn ($f) => Storage::disk('public')->url($f))
+            ->values()->toArray();
+
+        // Gabung semua, buang duplikat
+        $images = collect(array_merge($fromMulti, $fromSingle, $fromStorage))
+            ->filter()
+            ->unique()
+            ->values()
+            ->take(24)
+            ->toArray();
+
         return view('pages.gallery', compact('images'));
     }
 

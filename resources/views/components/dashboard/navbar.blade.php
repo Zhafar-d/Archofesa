@@ -1,11 +1,15 @@
 <header class="sticky top-0 z-40 border-b border-[#e7e2d8] bg-white/90 px-4 py-4 backdrop-blur sm:px-6 lg:px-8">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4">
-        <a href="{{ route('customer.dashboard') }}" class="flex items-center gap-2">
-            <div>
-                <p class="text-base font-bold tracking-[0.2em] text-[#c9a227]">ARCHOFESA</p>
-                <p class="text-xs font-semibold tracking-wider text-[#6b7280]">KOST</p>
-            </div>
-        </a>
+        <a href="/dashboard" class="flex items-center">
+    <div class="leading-tight">
+        <p class="text-base font-bold tracking-[0.2em] text-[#c9a227]">
+            ARCHOFESA
+        </p>
+        <p class="text-xs font-semibold tracking-[0.15em] text-[#6b7280]">
+            KOST
+        </p>
+    </div>
+</a>
 
         <nav class="hidden items-center gap-6 text-sm font-medium text-[#4b5563] lg:flex">
             <a href="{{ route('customer.dashboard') }}" class="transition hover:text-[#c9a227]">Beranda</a>
