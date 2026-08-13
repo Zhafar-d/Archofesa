@@ -1,0 +1,133 @@
+═══════════════════════════════════════════════════════════════════════════
+   📋 COPY-PASTE LANGSUNG KE RAILWAY AI
+═══════════════════════════════════════════════════════════════════════════
+
+Pilih salah satu prompt di bawah, copy, dan paste ke Railway AI agent:
+
+═══════════════════════════════════════════════════════════════════════════
+   PROMPT 1: COMPREHENSIVE (Diagnosis Lengkap)
+═══════════════════════════════════════════════════════════════════════════
+
+I'm deploying a Laravel 11 app (repo: https://github.com/Zhafar-d/Archofesa.git) and getting 500 error on all pages. Can you help me:
+
+1. Check deployment logs and show the specific error
+2. Verify these environment variables are set: APP_KEY, APP_ENV, APP_URL, DB_HOST, DB_DATABASE, DB_USERNAME, DB_PASSWORD, SESSION_DRIVER, CACHE_STORE
+3. Confirm if migrations ran successfully (run: php artisan migrate:status)
+4. Check if Vite assets are built (look for public/build/manifest.json)
+5. Verify build command includes: npm install && npm run build && composer install
+6. Run these cache clear commands: php artisan route:clear && php artisan config:clear && php artisan cache:clear
+
+Latest commit: 297d453. The app works locally but fails on Railway with 500 error.
+
+═══════════════════════════════════════════════════════════════════════════
+   PROMPT 2: QUICK (Diagnosis Cepat)
+═══════════════════════════════════════════════════════════════════════════
+
+Laravel 11 app returns 500 error on Railway. Please:
+1. Show deployment error logs
+2. Check if APP_KEY environment variable exists
+3. Verify database connection
+4. Run: php artisan route:clear && php artisan config:clear
+5. List missing environment variables
+
+Repo: https://github.com/Zhafar-d/Archofesa.git
+
+═══════════════════════════════════════════════════════════════════════════
+   PROMPT 3: SPECIFIC (Kalau sudah tau masalahnya di APP_KEY)
+═══════════════════════════════════════════════════════════════════════════
+
+My Laravel app shows 500 error. I suspect APP_KEY is missing. Can you:
+1. Check if APP_KEY environment variable is set
+2. If not, I'll generate one locally and add it - what's the format? (base64:xxx?)
+3. After I add APP_KEY, what other variables might be missing?
+4. Should I set SESSION_DRIVER=database and CACHE_STORE=database?
+
+═══════════════════════════════════════════════════════════════════════════
+   PROMPT 4: TROUBLESHOOTING (Kalau mau step-by-step)
+═══════════════════════════════════════════════════════════════════════════
+
+I need help troubleshooting my Laravel 11 deployment. Can you guide me step by step?
+
+First, can you check my deployment logs and tell me what the error is?
+
+Repo: https://github.com/Zhafar-d/Archofesa.git
+Issue: All pages return 500 error
+
+═══════════════════════════════════════════════════════════════════════════
+   PROMPT 5: ENVIRONMENT CHECK (Fokus ke env vars)
+═══════════════════════════════════════════════════════════════════════════
+
+Can you list all environment variables currently set in my Railway project and tell me which ones are missing for a Laravel 11 app?
+
+Required for Laravel:
+- APP_KEY, APP_ENV, APP_URL
+- DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD
+- SESSION_DRIVER, CACHE_STORE
+- LOG_CHANNEL
+
+Current issue: Getting 500 error on all pages.
+
+═══════════════════════════════════════════════════════════════════════════
+   PROMPT 6: BUILD/START COMMAND CHECK
+═══════════════════════════════════════════════════════════════════════════
+
+Can you verify if my build and start commands are correct for Laravel 11?
+
+Current setup:
+- Build Command: (not sure if set)
+- Start Command: (not sure if set)
+- Railway.json has: php artisan cache:clear && ... && php artisan migrate --force
+
+Recommended for Laravel 11:
+- Build: npm install && npm run build && composer install --optimize-autoloader --no-dev
+- Start: php artisan serve --host=0.0.0.0 --port=$PORT
+
+Can you update them if needed?
+
+═══════════════════════════════════════════════════════════════════════════
+   CARA MENGGUNAKAN:
+═══════════════════════════════════════════════════════════════════════════
+
+1. Buka Railway Dashboard
+2. Cari bagian AI agent atau support chat
+3. Copy salah satu prompt di atas
+4. Paste ke chat Railway AI
+5. Tunggu response dari AI
+6. Ikuti instruksi yang diberikan AI
+7. Jika AI memberikan command, jalankan di Railway Shell
+8. Test website lagi
+
+═══════════════════════════════════════════════════════════════════════════
+   JIKA AI MINTA INFO TAMBAHAN:
+═══════════════════════════════════════════════════════════════════════════
+
+Berikan info ini jika diminta:
+
+**Framework:** Laravel 11
+**PHP Version:** 8.2+
+**Database:** MySQL
+**Build Tool:** Vite
+**Repository:** https://github.com/Zhafar-d/Archofesa.git
+**Latest Commit:** 297d453
+**Issue:** 500 error on all pages including homepage
+**Works locally:** Yes
+**Railway URL:** https://archofesa-production.up.railway.app
+
+═══════════════════════════════════════════════════════════════════════════
+   EKSPEKTASI DARI AI:
+═══════════════════════════════════════════════════════════════════════════
+
+Railway AI seharusnya bisa:
+✅ Membaca deployment logs Anda
+✅ Melihat environment variables yang ter-set
+✅ Menjalankan commands di Railway Shell
+✅ Memberikan saran konfigurasi
+✅ Auto-fix beberapa masalah umum
+
+Jika AI tidak bisa melakukan hal di atas, minta AI untuk:
+"Can you check my deployment logs and show me the error?"
+"Can you run this command in shell: php artisan route:clear"
+
+═══════════════════════════════════════════════════════════════════════════
+
+REKOMENDASI: Mulai dengan PROMPT 1 (Comprehensive) untuk diagnosis lengkap! 🚀
