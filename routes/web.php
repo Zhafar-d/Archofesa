@@ -76,9 +76,54 @@ Route::get('/debug-kamar/{key}', function (string $key, \Illuminate\Http\Request
 
 Route::get('/debug-edit/{key}/{id}', function (string $key, int $id) {
     if ($key !== 'debug2026') abort(403);
-    // Simulate the actual edit route without middleware
-    $room = \App\Models\Room::findOrFail($id);
-    return view('admin.kamar.edit', compact('room'));
+
+    // Enable detailed error reporting
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
+    try {
+        $room = \App\Models\Room::findOrFail($id);
+        return view('admin.kamar.edit', compact('room'));
+    } catch (\Throwable $e) {
+        return response(
+            "ERROR: " . $e->getMessage() . "\n\n" .
+            "File: " . $e->getFile() . ":" . $e->getLine() . "\n\n" .
+            $e->getTraceAsString()
+        )->header('Content-Type', 'text/plain');
+    }
+});
+
+// Cek UpdateRoomRequest validation rules
+Route::get('/debug-request/{key}', function (string $key) {
+    if ($key !== 'debug2026') abort(403);
+    $output = [];
+
+    // Check if UpdateRoomRequest exists and its rules
+    $requestClass = \App\Http\Requests\Admin\UpdateRoomRequest::class;
+    $output[] = "UpdateRoomRequest exists: " . (class_exists($requestClass) ? 'yes' : 'no');
+
+    // Check StoreRoomRequest
+    $storeClass = \App\Http\Requests\Admin\StoreRoomRequest::class;
+    $output[] = "StoreRoomRequest exists: " . (class_exists($storeClass) ? 'yes' : 'no');
+
+    // List all routes with admin.kamar
+    $routes = collect(\Illuminate\Support\Facades\Route::getRoutes())->filter(function($r) {
+        return str_contains($r->getName() ?? '', 'admin.kamar');
+    })->map(fn($r) => $r->methods()[0] . ' ' . $r->uri() . ' -> ' . $r->getName());
+
+    $output[] = "\nAdmin kamar routes:";
+    foreach ($routes as $r) { $output[] = "  $r"; }
+
+    // Check EnsureRole middleware
+    $output[] = "\nEnsureRole middleware:";
+    try {
+        $mw = new \App\Http\Middleware\EnsureRole();
+        $output[] = "  class exists: yes";
+    } catch (\Throwable $e) {
+        $output[] = "  ERROR: " . $e->getMessage();
+    }
+
+    return response(implode("\n", $output))->header('Content-Type', 'text/plain');
 });
 
 
