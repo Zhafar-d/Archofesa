@@ -59,12 +59,26 @@ Route::get('/debug-kamar/{key}', function (string $key, \Illuminate\Http\Request
         $output[] = "FILESYSTEM_DISK: " . config('filesystems.default');
         $output[] = "Storage path exists: " . (file_exists(storage_path('app/public/rooms')) ? 'yes' : 'no');
 
+        // Test actual admin.kamar.edit route
+        $output[] = "";
+        $output[] = "Route admin.kamar.edit exists: " . (Route::has('admin.kamar.edit') ? 'yes' : 'no');
+
+        // Check middleware
+        $output[] = "Auth check: " . (\Illuminate\Support\Facades\Auth::check() ? 'logged in as ' . \Illuminate\Support\Facades\Auth::user()->email : 'not logged in');
+
     } catch (\Throwable $e) {
         $output[] = "FATAL: " . $e->getMessage();
         $output[] = $e->getFile() . ":" . $e->getLine();
         $output[] = $e->getTraceAsString();
     }
     return response(implode("\n", $output))->header('Content-Type', 'text/plain');
+});
+
+Route::get('/debug-edit/{key}/{id}', function (string $key, int $id) {
+    if ($key !== 'debug2026') abort(403);
+    // Simulate the actual edit route without middleware
+    $room = \App\Models\Room::findOrFail($id);
+    return view('admin.kamar.edit', compact('room'));
 });
 
 
