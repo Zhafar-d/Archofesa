@@ -24,6 +24,20 @@ use Illuminate\Support\Facades\Route;
 // Lihat: public/test-railway.php
 
 // ── Diagnostic Routes (Hapus setelah selesai debugging) ─────────────────────
+Route::get('/diagnostic/vite-check', function() {
+    $manifestPath = public_path('build/manifest.json');
+    $buildPath = public_path('build');
+    
+    return response()->json([
+        'build_directory_exists' => file_exists($buildPath),
+        'manifest_exists' => file_exists($manifestPath),
+        'manifest_path' => $manifestPath,
+        'public_path' => public_path(),
+        'build_files' => file_exists($buildPath) ? scandir($buildPath) : [],
+        'npm_build_needed' => !file_exists($manifestPath),
+    ]);
+});
+
 Route::get('/diagnostic/basic', function() {
     return response()->json([
         'status' => 'ok',
