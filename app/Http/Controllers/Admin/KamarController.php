@@ -54,8 +54,14 @@ class KamarController extends Controller
         return redirect()->route('admin.kamar.index')->with('success', 'Kamar berhasil dibuat.');
     }
 
-    public function edit(Room $room)
+    public function edit($id)
     {
+        $room = Room::findOrFail($id);
+
+        if (! $room) {
+            abort(404);
+        }
+
         return view('admin.kamar.edit', compact('room'));
     }
 
