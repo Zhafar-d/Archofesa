@@ -1,1 +1,0 @@
-﻿{"$schema":"https://railway.com/railway.schema.json","deploy":{"releaseCommand":"php artisan migrate --force && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link"}}
