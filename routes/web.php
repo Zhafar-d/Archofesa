@@ -19,6 +19,82 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
+// ── Diagnostic Routes (Hapus setelah selesai debugging) ─────────────────────
+Route::get('/diagnostic/basic', function() {
+    return response()->json([
+        'status' => 'ok',
+        'php_version' => phpversion(),
+        'laravel_version' => app()->version(),
+        'env' => config('app.env'),
+    ]);
+});
+
+Route::get('/diagnostic/db', function() {
+    try {
+        \Illuminate\Support\Facades\DB::connection()->getPdo();
+        $roomCount = \App\Models\Room::count();
+        return response()->json([
+            'db_connection' => 'ok',
+            'room_count' => $roomCount,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'db_connection' => 'failed',
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+});
+
+Route::get('/diagnostic/room/{id}', function($id) {
+    try {
+        $room = \App\Models\Room::findOrFail($id);
+        return response()->json([
+            'room_found' => true,
+            'room_code' => $room->room_code,
+            'price_raw' => $room->getRawOriginal('price_monthly'),
+            'image_url_raw' => $room->getRawOriginal('image_url'),
+            'status' => $room->status,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'room_found' => false,
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+        ], 500);
+    }
+});
+
+Route::get('/diagnostic/view-test', function() {
+    try {
+        $room = \App\Models\Room::first();
+        if (!$room) {
+            return "No rooms in database";
+        }
+        
+        // Test render view dengan data minimal
+        $html = view('admin.kamar.edit', compact('room'))->render();
+        return response("View rendered OK - Length: " . strlen($html) . " bytes");
+    } catch (\Exception $e) {
+        return response()->json([
+            'view_render' => 'failed',
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => explode("\n", $e->getTraceAsString()),
+        ], 500);
+    }
+});
+
+Route::middleware(['auth'])->get('/diagnostic/auth-test', function() {
+    $user = auth()->user();
+    return response()->json([
+        'authenticated' => true,
+        'user_id' => $user->id,
+        'user_email' => $user->email,
+        'user_role' => $user->role,
+    ]);
+});
+
 // ── Public pages ────────────────────────────────────────────────────────────
 Route::get('/',               [PublicController::class, 'home'])->name('home');
 Route::get('/about',          [PublicController::class, 'about'])->name('about');

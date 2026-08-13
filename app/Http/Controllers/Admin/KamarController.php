@@ -56,7 +56,31 @@ class KamarController extends Controller
 
     public function edit(Room $room)
     {
-        return view('admin.kamar.edit', compact('room'));
+        // Debug logging untuk production
+        \Log::info('KamarController@edit called', [
+            'room_id' => $room->id,
+            'room_code' => $room->room_code,
+            'has_image_url' => !empty($room->getRawOriginal('image_url')),
+        ]);
+
+        try {
+            return view('admin.kamar.edit', compact('room'));
+        } catch (\Throwable $e) {
+            \Log::error('KamarController@edit failed', [
+                'error' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+            
+            // Jika production dan debug false, tampilkan error yang lebih informatif
+            if (config('app.env') === 'production' && !config('app.debug')) {
+                return response()->view('errors.500', [
+                    'message' => 'Gagal memuat halaman edit. Error: ' . $e->getMessage()
+                ], 500);
+            }
+            
+            throw $e;
+        }
     }
 
     public function update(Request $request, Room $room)
