@@ -1,0 +1,88 @@
+═══════════════════════════════════════════════════════════════════════════
+   🚨 CARA FIX 404 ERROR - SUPER SIMPLE! 🚨
+═══════════════════════════════════════════════════════════════════════════
+
+Masalah: Semua halaman Railway menampilkan 404 "Halaman tidak ditemukan"
+Penyebab: Route cache di Railway masih menyimpan route lama
+
+═══════════════════════════════════════════════════════════════════════════
+   LANGKAH 1: BUKA RAILWAY SHELL
+═══════════════════════════════════════════════════════════════════════════
+
+1. Masuk ke https://railway.app
+2. Klik project "Archofesa"
+3. Klik tab "Shell" (ikon terminal) di bagian atas
+
+═══════════════════════════════════════════════════════════════════════════
+   LANGKAH 2: COPY-PASTE COMMAND INI DI RAILWAY SHELL
+═══════════════════════════════════════════════════════════════════════════
+
+Copy command ini (SELURUH BARIS):
+
+php artisan route:clear && php artisan config:clear && php artisan cache:clear && php artisan view:clear
+
+Paste di Railway Shell, tekan Enter, tunggu selesai.
+
+═══════════════════════════════════════════════════════════════════════════
+   LANGKAH 3: TEST HOMEPAGE
+═══════════════════════════════════════════════════════════════════════════
+
+Buka browser, akses:
+https://archofesa-production.up.railway.app
+
+✅ Kalau homepage muncul → BERHASIL! Lanjut ke langkah 4
+❌ Kalau masih 404 → Screenshot error dan kirim ke saya
+
+═══════════════════════════════════════════════════════════════════════════
+   LANGKAH 4: TEST LOGIN ADMIN
+═══════════════════════════════════════════════════════════════════════════
+
+Login sebagai admin:
+Email: admin@archofesa.test
+Password: admin12345
+
+═══════════════════════════════════════════════════════════════════════════
+   LANGKAH 5: TEST HALAMAN EDIT KAMAR
+═══════════════════════════════════════════════════════════════════════════
+
+1. Buka: https://archofesa-production.up.railway.app/admin/kamar
+2. Klik tombol "Ubah" pada salah satu kamar
+
+✅ Kalau halaman edit muncul → SELESAI! Masalah teratasi!
+❌ Kalau muncul 500 error → Screenshot error dan kirim ke saya
+
+═══════════════════════════════════════════════════════════════════════════
+   KALAU RAILWAY SHELL TIDAK TERSEDIA
+═══════════════════════════════════════════════════════════════════════════
+
+Alternative: Update railway.json manual
+
+1. Edit file: railway.json
+2. Ubah bagian "releaseCommand" menjadi:
+   "releaseCommand": "bash deploy.sh"
+3. Simpan file
+4. Git push:
+   git add railway.json
+   git commit -m "Use deploy script"
+   git push origin main
+
+═══════════════════════════════════════════════════════════════════════════
+   YANG PERLU ANDA KIRIM KE SAYA
+═══════════════════════════════════════════════════════════════════════════
+
+Kirim status ini:
+
+[ ] Railway Shell command sudah dijalankan: YA / TIDAK
+[ ] Homepage bisa diakses: YA / TIDAK
+[ ] Login admin berhasil: YA / TIDAK
+[ ] Halaman admin/kamar bisa dibuka: YA / TIDAK
+[ ] Halaman edit kamar bisa dibuka: YA / TIDAK
+
+Kalau ada yang TIDAK, screenshot error yang muncul.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PENTING: Lakukan LANGKAH 1-2 dulu sebelum test apapun!
+Clear cache di Railway Shell adalah kunci untuk fix 404 error.
+
+═══════════════════════════════════════════════════════════════════════════
