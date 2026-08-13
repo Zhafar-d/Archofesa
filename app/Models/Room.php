@@ -34,12 +34,15 @@ class Room extends Model
             return $value;
         }
 
-        // Fallback: grab any .jpg in storage/rooms
-        $fallback = collect(Storage::disk('public')->files('rooms'))
-            ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
-            ->first();
-
-        return $fallback ? Storage::disk('public')->url($fallback) : null;
+        // Fallback: hanya jika storage accessible (skip di production tanpa symlink)
+        try {
+            $fallback = collect(Storage::disk('public')->files('rooms'))
+                ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
+                ->first();
+            return $fallback ? Storage::disk('public')->url($fallback) : null;
+        } catch (\Throwable $e) {
+            return null;
+        }
     }
 
     /**
@@ -59,12 +62,16 @@ class Room extends Model
             return [$this->attributes['image_url']];
         }
 
-        // Fallback: every photo in storage/rooms
-        return collect(Storage::disk('public')->files('rooms'))
-            ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
-            ->map(fn ($f) => Storage::disk('public')->url($f))
-            ->values()
-            ->toArray();
+        // Fallback: every photo in storage/rooms (safe)
+        try {
+            return collect(Storage::disk('public')->files('rooms'))
+                ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
+                ->map(fn ($f) => Storage::disk('public')->url($f))
+                ->values()
+                ->toArray();
+        } catch (\Throwable $e) {
+            return [];
+        }
     }
 
     public function getIsAvailableAttribute(): bool

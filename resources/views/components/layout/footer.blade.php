@@ -20,7 +20,7 @@
             <ul class="mt-4 space-y-3 text-sm text-[#4b5563]">
                 <li>Jl. Kyai Abdul Manan, Pedurungan Tengah, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50192</li>
                 <li>+62 882 3729 9199</li>
-                <li>@archofesakost@gmail.com</li>sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                <li>@archofesakost@gmail.com</li>
             </ul>
         </div>
     </div>
