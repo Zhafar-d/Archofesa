@@ -19,6 +19,55 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
+// ── Debug (HAPUS setelah selesai) ────────────────────────────────────────────
+Route::get('/debug-kamar/{key}', function (string $key, \Illuminate\Http\Request $request) {
+    if ($key !== 'debug2026') abort(403);
+    $output = [];
+    try {
+        $roomId = $request->query('id', 18);
+        $room   = \App\Models\Room::find($roomId) ?? \App\Models\Room::first();
+        if (! $room) { return response("No rooms found in DB", 200)->header('Content-Type', 'text/plain'); }
+
+        $output[] = "Room: {$room->room_code} (id={$room->id})";
+        $output[] = "raw image_url: " . $room->getRawOriginal('image_url');
+        $output[] = "raw price_monthly: " . $room->getRawOriginal('price_monthly');
+        $output[] = "status: {$room->status}";
+        $output[] = "";
+
+        // Test accessor
+        try {
+            $img = $room->image_url;
+            $output[] = "accessor image_url OK: " . ($img ?? 'null');
+        } catch (\Throwable $e) {
+            $output[] = "accessor image_url FAILED: " . $e->getMessage() . " @ " . $e->getFile() . ":" . $e->getLine();
+        }
+
+        // Test view
+        try {
+            $html = view('admin.kamar.edit', compact('room'))->render();
+            $output[] = "view render OK (" . strlen($html) . " chars)";
+        } catch (\Throwable $e) {
+            $output[] = "view render FAILED: " . $e->getMessage();
+            $output[] = "at: " . $e->getFile() . ":" . $e->getLine();
+            $output[] = $e->getTraceAsString();
+        }
+
+        // Env info
+        $output[] = "";
+        $output[] = "APP_ENV: " . config('app.env');
+        $output[] = "DB: " . config('database.default');
+        $output[] = "FILESYSTEM_DISK: " . config('filesystems.default');
+        $output[] = "Storage path exists: " . (file_exists(storage_path('app/public/rooms')) ? 'yes' : 'no');
+
+    } catch (\Throwable $e) {
+        $output[] = "FATAL: " . $e->getMessage();
+        $output[] = $e->getFile() . ":" . $e->getLine();
+        $output[] = $e->getTraceAsString();
+    }
+    return response(implode("\n", $output))->header('Content-Type', 'text/plain');
+});
+
+
 // ── Public pages ────────────────────────────────────────────────────────────
 Route::get('/',               [PublicController::class, 'home'])->name('home');
 Route::get('/about',          [PublicController::class, 'about'])->name('about');
