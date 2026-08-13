@@ -46,6 +46,5 @@
                 <button class="rounded-full bg-[#c9a227] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b68d1f]">Simpan Kamar</button>
             </form>
         </div>
-    </div>
 </div>
 @endsection

@@ -48,6 +48,5 @@
 
             <div class="mt-6">{{ $rooms->links() }}</div>
         </div>
-    </div>
 </div>
 @endsection
