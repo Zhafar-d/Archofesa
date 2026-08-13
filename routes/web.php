@@ -19,6 +19,10 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
+// ── Emergency Debug Route (Access tanpa Laravel bootstrap) ────────────────
+// Akses langsung file PHP untuk bypass Laravel error
+// Lihat: public/test-railway.php
+
 // ── Diagnostic Routes (Hapus setelah selesai debugging) ─────────────────────
 Route::get('/diagnostic/basic', function() {
     return response()->json([
