@@ -126,6 +126,65 @@
                 if (moveInInput.value) {
                     updateMoveOutDate();
                 }
+
+                // Handle room selection - prevent form submission on "Pilih Kamar" button click
+                const roomButtons = document.querySelectorAll('button[type="button"]');
+                roomButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Find the radio input in the same label
+                        const label = this.closest('label');
+                        if (label) {
+                            const radio = label.querySelector('input[type="radio"]');
+                            if (radio && !radio.disabled) {
+                                radio.checked = true;
+                                // Trigger change event to update styling
+                                radio.dispatchEvent(new Event('change', { bubbles: true }));
+                            }
+                        }
+                    });
+                });
+
+                // Preserve room selection on form validation error
+                const roomInputs = document.querySelectorAll('input[name="room_id"]');
+                roomInputs.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        // Store selected room in sessionStorage
+                        if (this.checked) {
+                            sessionStorage.setItem('selectedRoomId', this.value);
+                        }
+                    });
+                });
+
+                // Restore selection from sessionStorage if exists
+                const savedRoomId = sessionStorage.getItem('selectedRoomId');
+                if (savedRoomId) {
+                    const savedRadio = document.querySelector(`input[name="room_id"][value="${savedRoomId}"]`);
+                    if (savedRadio && !savedRadio.disabled) {
+                        savedRadio.checked = true;
+                    }
+                }
+
+                // Clear sessionStorage on successful submission
+                const form = document.querySelector('form[action*="booking.store"]');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        // Check if a room is selected
+                        const selectedRoom = document.querySelector('input[name="room_id"]:checked');
+                        if (!selectedRoom) {
+                            e.preventDefault();
+                            alert('Silakan pilih kamar terlebih dahulu!');
+                            return false;
+                        }
+                        
+                        // Form is valid, clear storage after a short delay
+                        setTimeout(() => {
+                            sessionStorage.removeItem('selectedRoomId');
+                        }, 100);
+                    });
+                }
             });
         </script>
 
