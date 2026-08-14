@@ -81,22 +81,57 @@ async function sendConfirm(result) {
 }
 
 btn.addEventListener('click', function () {
+    // Check if Midtrans Snap is loaded
+    if (typeof snap === 'undefined') {
+        alert('Midtrans belum siap. Mohon refresh halaman dan coba lagi.');
+        console.error('Midtrans Snap script not loaded');
+        return;
+    }
+
     btn.disabled    = true;
     btn.textContent = 'Memproses...';
 
-    snap.pay('{{ $snapToken }}', {
-        onSuccess : (result) => sendConfirm(result),
-        onPending : (result) => sendConfirm(result),
-        onError   : (_)      => {
-            btn.disabled    = false;
-            btn.textContent = 'Bayar Sekarang';
-            alert('Gagal memproses pembayaran. Silakan coba lagi.');
-        },
-        onClose   : ()       => {
-            btn.disabled    = false;
-            btn.textContent = 'Bayar Sekarang';
-        },
-    });
+    try {
+        snap.pay('{{ $snapToken }}', {
+            onSuccess : (result) => sendConfirm(result),
+            onPending : (result) => sendConfirm(result),
+            onError   : (error)  => {
+                btn.disabled    = false;
+                btn.textContent = 'Bayar Sekarang';
+                console.error('Midtrans error:', error);
+                alert('Gagal memproses pembayaran. Silakan coba lagi.');
+            },
+            onClose   : ()       => {
+                btn.disabled    = false;
+                btn.textContent = 'Bayar Sekarang';
+            },
+        });
+    } catch (error) {
+        btn.disabled    = false;
+        btn.textContent = 'Bayar Sekarang';
+        console.error('Error calling snap.pay:', error);
+        alert('Terjadi kesalahan. Mohon refresh halaman dan coba lagi.');
+    }
+});
+
+// Show loading message while script loads
+window.addEventListener('DOMContentLoaded', function() {
+    const checkSnap = setInterval(function() {
+        if (typeof snap !== 'undefined') {
+            console.log('Midtrans Snap loaded successfully');
+            clearInterval(checkSnap);
+        }
+    }, 100);
+    
+    // Timeout after 10 seconds
+    setTimeout(function() {
+        clearInterval(checkSnap);
+        if (typeof snap === 'undefined') {
+            console.error('Midtrans Snap failed to load after 10 seconds');
+            btn.textContent = 'Script Midtrans Gagal Dimuat - Refresh Halaman';
+            btn.disabled = true;
+        }
+    }, 10000);
 });
 </script>
 @endsection
