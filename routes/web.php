@@ -170,7 +170,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('/bookings/{booking}/confirm-to-owner',       [AdminBookingController::class, 'confirmToOwner'])->name('bookings.confirm-to-owner');
     Route::post('/bookings/{booking}/confirm-ready-to-occupy',[AdminBookingController::class, 'confirmReadyToOccupy'])->name('bookings.confirm-ready-to-occupy');
 
-    Route::resource('kamar', AdminKamarController::class);
+    Route::resource('kamar', AdminKamarController::class)->parameters(['kamar' => 'room']);
     Route::resource('pembayaran', AdminPembayaranController::class)->only(['index']);
     Route::post('/pembayaran/{payment}/mark-paid',            [AdminPembayaranController::class, 'markPaid'])->name('pembayaran.mark-paid');
     Route::resource('penghuni', AdminPenghuniController::class)->only(['index']);
