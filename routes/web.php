@@ -150,6 +150,7 @@ Route::middleware(['auth', 'check.role:user'])->group(function () {
 
     Route::get('/booking',                    [BookingController::class, 'index'])->name('booking');
     Route::post('/booking',                   [BookingController::class, 'store'])->name('booking.store');
+    Route::delete('/booking/{booking}/cancel', [BookingController::class, 'cancel'])->name('booking.cancel');
     Route::get('/riwayat-booking',            [BookingController::class, 'riwayat'])->name('riwayat-booking');
     Route::get('/customer/extend/{booking}',  [BookingController::class, 'extendForm'])->name('customer.extend.form');
     Route::post('/customer/extend/{booking}', [BookingController::class, 'extend'])->name('customer.extend');
