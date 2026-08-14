@@ -1,0 +1,213 @@
+═══════════════════════════════════════════════════════════════
+              📋 COMMAND REFERENCE - COPY PASTE ONLY
+═══════════════════════════════════════════════════════════════
+
+───────────────────────────────────────────────────────────────
+1. GIT COMMANDS (Push Code Baru)
+───────────────────────────────────────────────────────────────
+
+cd C:\xampp\htdocs\Archofesa
+
+git add .
+
+git commit -m "Fix: Auto clear config cache untuk Midtrans"
+
+git push origin main
+
+
+───────────────────────────────────────────────────────────────
+2. RAILWAY VARIABLES (Copy Value Ini)
+───────────────────────────────────────────────────────────────
+
+Variable Name 1:
+MIDTRANS_SERVER_KEY
+
+Variable Value 1:
+SB-Mid-server-037y4EYaXZzwCcd319T1oKiS
+
+
+Variable Name 2:
+MIDTRANS_CLIENT_KEY
+
+Variable Value 2:
+SB-Mid-client-82FiFvkuZsSQ_EDk
+
+
+Variable Name 3:
+MIDTRANS_IS_PRODUCTION
+
+Variable Value 3:
+false
+
+
+───────────────────────────────────────────────────────────────
+3. RAILWAY SHELL COMMANDS (Jika Perlu Manual Clear Cache)
+───────────────────────────────────────────────────────────────
+
+php artisan config:clear
+
+php artisan cache:clear
+
+php artisan tinker
+
+
+───────────────────────────────────────────────────────────────
+4. LARAVEL TINKER (Check Config)
+───────────────────────────────────────────────────────────────
+
+Setelah masuk tinker, jalankan:
+
+config('midtrans.server_key')
+
+config('midtrans.client_key')
+
+config('midtrans.is_production')
+
+Expected output bukan null, tapi value-nya!
+
+
+───────────────────────────────────────────────────────────────
+5. MIDTRANS TEST CARD (Untuk Testing Payment)
+───────────────────────────────────────────────────────────────
+
+Card Number:
+4811 1111 1111 1114
+
+CVV:
+123
+
+Expiry Date:
+01/25
+
+Result: Success
+
+
+Card Number (Failed Test):
+4911 1111 1111 1113
+
+CVV:
+123
+
+Expiry Date:
+01/25
+
+Result: Failed (untuk test error handling)
+
+
+───────────────────────────────────────────────────────────────
+6. URLS
+───────────────────────────────────────────────────────────────
+
+Production:
+https://archofesa-production.up.railway.app
+
+Railway Dashboard:
+https://railway.app
+
+GitHub Repo:
+https://github.com/Zhafar-d/Archofesa.git
+
+Midtrans Dashboard:
+https://dashboard.midtrans.com
+
+Firebase Console:
+https://console.firebase.google.com/project/q-les-60994286-68385
+
+
+───────────────────────────────────────────────────────────────
+7. LOGIN CREDENTIALS
+───────────────────────────────────────────────────────────────
+
+Admin:
+Email: admin@archofesa.test
+Password: admin12345
+
+Owner:
+Email: owner@archofesa.test
+Password: owner12345
+
+User Test (jika ada):
+Email: test@test.com
+Password: password
+
+
+───────────────────────────────────────────────────────────────
+8. FIREBASE VARIABLES (Untuk Fix Chat - Optional)
+───────────────────────────────────────────────────────────────
+
+FIREBASE_API_KEY
+AIzaSyBZ-SloLx0aEGJfbDCXGuiQ2_KyR1N8b38
+
+FIREBASE_AUTH_DOMAIN
+q-les-60994286-68385.firebaseapp.com
+
+FIREBASE_PROJECT_ID
+q-les-60994286-68385
+
+FIREBASE_STORAGE_BUCKET
+q-les-60994286-68385.firebasestorage.app
+
+FIREBASE_MESSAGING_SENDER_ID
+723041074090
+
+FIREBASE_APP_ID
+1:723041074090:web:14b17988dbca9df18689d3
+
+VITE_FIREBASE_API_KEY
+AIzaSyBZ-SloLx0aEGJfbDCXGuiQ2_KyR1N8b38
+
+VITE_FIREBASE_AUTH_DOMAIN
+q-les-60994286-68385.firebaseapp.com
+
+VITE_FIREBASE_PROJECT_ID
+q-les-60994286-68385
+
+VITE_FIREBASE_STORAGE_BUCKET
+q-les-60994286-68385.firebasestorage.app
+
+VITE_FIREBASE_MESSAGING_SENDER_ID
+723041074090
+
+VITE_FIREBASE_APP_ID
+1:723041074090:web:14b17988dbca9df18689d3
+
+
+───────────────────────────────────────────────────────────────
+9. PRODUCTION SETTINGS (Recommended After Testing)
+───────────────────────────────────────────────────────────────
+
+APP_DEBUG
+false
+
+LOG_LEVEL
+error
+
+APP_URL
+https://archofesa-production.up.railway.app
+
+
+───────────────────────────────────────────────────────────────
+10. BROWSER TESTING COMMANDS
+───────────────────────────────────────────────────────────────
+
+Hard Refresh (Clear Cache):
+Windows: Ctrl + Shift + R
+Mac: Cmd + Shift + R
+
+Open Console:
+Windows: F12 atau Ctrl + Shift + I
+Mac: Cmd + Option + I
+
+Clear Browser Cookies/Cache:
+Chrome: Ctrl + Shift + Delete
+Firefox: Ctrl + Shift + Delete
+
+
+═══════════════════════════════════════════════════════════════
+                    SIMPAN FILE INI UNTUK REFERENCE!
+═══════════════════════════════════════════════════════════════
+
+Semua command dan value di file ini bisa langsung COPY-PASTE!
+Tidak perlu edit atau ubah apapun!
+
+═══════════════════════════════════════════════════════════════

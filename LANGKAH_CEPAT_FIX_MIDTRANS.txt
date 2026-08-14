@@ -1,0 +1,84 @@
+═══════════════════════════════════════════════════════════════
+🚨 FIX CEPAT: Error "ServerKey/ClientKey is null"
+═══════════════════════════════════════════════════════════════
+
+MASALAH:
+❌ Payment page error 500
+❌ "The ServerKey/ClientKey is null"
+
+PENYEBAB:
+Railway belum punya environment variables untuk Midtrans
+
+═══════════════════════════════════════════════════════════════
+SOLUSI 3 LANGKAH (5 MENIT):
+═══════════════════════════════════════════════════════════════
+
+LANGKAH 1: Push File Baru ke GitHub
+────────────────────────────────────
+Jalankan command ini di local (xampp/htdocs/Archofesa):
+
+git add nixpacks.toml RAILWAY_MIDTRANS_SETUP.md LANGKAH_CEPAT_FIX_MIDTRANS.txt
+git commit -m "Fix: Auto clear config cache untuk Midtrans"
+git push origin main
+
+LANGKAH 2: Tambah Variables di Railway
+────────────────────────────────────
+1. Buka: https://railway.app
+2. Pilih project: archofesa-production
+3. Klik tab "Variables"
+4. Tambahkan 3 variables ini:
+
+   Nama: MIDTRANS_SERVER_KEY
+   Value: SB-Mid-server-037y4EYaXZzwCcd319T1oKiS
+
+   Nama: MIDTRANS_CLIENT_KEY
+   Value: SB-Mid-client-82FiFvkuZsSQ_EDk
+
+   Nama: MIDTRANS_IS_PRODUCTION
+   Value: false
+
+5. Setelah add variables, Railway akan AUTO RE-DEPLOY
+
+LANGKAH 3: Tunggu Deploy Selesai
+────────────────────────────────────
+1. Klik tab "Deployments" di Railway
+2. Tunggu status jadi "Success" (2-5 menit)
+3. Test payment page lagi
+
+═══════════════════════════════════════════════════════════════
+CARA TEST SETELAH SELESAI:
+═══════════════════════════════════════════════════════════════
+
+1. Login sebagai user (bukan admin) di:
+   https://archofesa-production.up.railway.app
+
+2. Buka "Pembayaran Saya" atau Customer Dashboard
+
+3. Klik tombol "Bayar"
+
+4. Harus muncul popup Midtrans (BUKAN error 500)
+
+═══════════════════════════════════════════════════════════════
+KENAPA INI TERJADI?
+═══════════════════════════════════════════════════════════════
+
+- Di local (.env), Midtrans credentials sudah ada ✅
+- Di Railway, Midtrans credentials belum ditambahkan ❌
+- Laravel cache config dengan nilai kosong (null) ❌
+- File nixpacks.toml sekarang sudah fix untuk auto clear cache ✅
+
+Setelah add variables + deploy ulang = SELESAI! ✅
+
+═══════════════════════════════════════════════════════════════
+JIKA MASIH ERROR:
+═══════════════════════════════════════════════════════════════
+
+1. Pastikan 3 variables sudah di Railway tab "Variables"
+2. Pastikan Railway deployment status = "Success"
+3. Buka Railway Shell dan run:
+   php artisan config:clear
+   php artisan cache:clear
+
+4. Screenshot error + Railway variables dan tanya AI lagi
+
+═══════════════════════════════════════════════════════════════

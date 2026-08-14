@@ -1,0 +1,248 @@
+═══════════════════════════════════════════════════════════════════════
+            🚀 PANDUAN VISUAL: FIX PAYMENT ERROR DI RAILWAY
+═══════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                        PROBLEM SAAT INI:                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  User mencoba bayar → Error 500                                    │
+│                                                                     │
+│  ❌ "The ServerKey/ClientKey is null"                              │
+│                                                                     │
+│  Penyebab: Railway belum punya Midtrans credentials                │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                      STEP 1: PUSH CODE BARU                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Buka CMD/Terminal di folder: C:\xampp\htdocs\Archofesa
+
+Jalankan command:
+┌─────────────────────────────────────────────────────────────────┐
+│ git add .                                                       │
+│ git commit -m "Fix: Auto clear config cache untuk Midtrans"    │
+│ git push origin main                                            │
+└─────────────────────────────────────────────────────────────────┘
+
+Output yang diharapkan:
+✓ Enumerating objects...
+✓ Counting objects...
+✓ Writing objects...
+✓ To https://github.com/Zhafar-d/Archofesa.git
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃              STEP 2: BUKA RAILWAY & ADD VARIABLES                 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+1. Buka browser → https://railway.app
+
+2. Login dengan akun Railway kamu
+
+3. Pilih project: "archofesa-production"
+
+4. Klik tab "Variables" (di samping Deployments, Settings)
+
+┌─────────────────────────────────────────────────────────────────┐
+│  Railway Dashboard                                              │
+│                                                                 │
+│  [Deployments] [Variables] [Settings] [Logs]                   │
+│        ▲                                                        │
+│        └── KLIK INI!                                            │
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  + New Variable                    🔍 Search variables   │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│     ▲                                                           │
+│     └── KLIK INI untuk tambah variable                         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+5. Tambahkan 3 VARIABLES berikut satu per satu:
+
+┌─────────────────────────────────────────────────────────────────┐
+│ VARIABLE 1:                                                     │
+│ Name:  MIDTRANS_SERVER_KEY                                      │
+│ Value: SB-Mid-server-037y4EYaXZzwCcd319T1oKiS                   │
+│                                                                 │
+│ [Add Variable]                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│ VARIABLE 2:                                                     │
+│ Name:  MIDTRANS_CLIENT_KEY                                      │
+│ Value: SB-Mid-client-82FiFvkuZsSQ_EDk                           │
+│                                                                 │
+│ [Add Variable]                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│ VARIABLE 3:                                                     │
+│ Name:  MIDTRANS_IS_PRODUCTION                                   │
+│ Value: false                                                    │
+│                                                                 │
+│ [Add Variable]                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+⚠️  PENTING: Copy-paste value dengan TELITI!
+    Jangan ada spasi di depan atau belakang!
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                 STEP 3: TUNGGU RAILWAY RE-DEPLOY                  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Setelah add variables, Railway akan OTOMATIS re-deploy!
+
+1. Klik tab "Deployments"
+
+2. Lihat deployment paling atas:
+
+┌─────────────────────────────────────────────────────────────────┐
+│  Deployments                                                    │
+│                                                                 │
+│  ┌────────────────────────────────────────────────────────┐    │
+│  │  ● Building...                                         │    │
+│  │    main branch - 2 minutes ago                         │    │
+│  │    Started by: Variable change                         │    │
+│  │    [View Logs]                                         │    │
+│  └────────────────────────────────────────────────────────┘    │
+│                                                                 │
+│  Status akan berubah menjadi:                                  │
+│                                                                 │
+│  ┌────────────────────────────────────────────────────────┐    │
+│  │  ✓ Success                                             │    │
+│  │    main branch - 5 minutes ago                         │    │
+│  │    Deployed successfully                               │    │
+│  └────────────────────────────────────────────────────────┘    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+3. Tunggu sampai status jadi "Success" (biasanya 2-5 menit)
+
+Progress yang akan muncul:
+┌─────────────────────────────────────────────────────────────────┐
+│  ⏳ Initializing...                                             │
+│  ⏳ Installing dependencies...                                  │
+│  ⏳ Building assets (npm run build)...                          │
+│  ⏳ Starting PHP server...                                      │
+│  ✅ Deployed successfully!                                      │
+└─────────────────────────────────────────────────────────────────┘
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                    STEP 4: TEST PAYMENT FLOW                      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+1. Buka: https://archofesa-production.up.railway.app
+
+2. Login sebagai USER (bukan admin/owner)
+   
+   Contoh credentials user test:
+   Email: test@test.com
+   Pass: password
+
+3. Buka menu "Pembayaran Saya" atau "Dashboard Customer"
+
+4. Klik tombol [Bayar] pada payment yang pending
+
+HASIL YANG DIHARAPKAN:
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│                   ✓ POPUP MIDTRANS MUNCUL!                     │
+│                                                                 │
+│      ┌─────────────────────────────────────────────┐           │
+│      │  💳 Pilih Metode Pembayaran                 │           │
+│      │                                             │           │
+│      │  ○ Credit Card / Debit Card                │           │
+│      │  ○ GoPay                                    │           │
+│      │  ○ Bank Transfer (BCA, Mandiri, dll)       │           │
+│      │  ○ Alfamart / Indomaret                    │           │
+│      │                                             │           │
+│      │            [Bayar Sekarang]                 │           │
+│      └─────────────────────────────────────────────┘           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+❌ JIKA MASIH ERROR 500:
+   - Cek Railway logs untuk error message
+   - Pastikan 3 variables sudah ada di tab "Variables"
+   - Screenshot dan tanya AI assistant
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                       KENAPA INI TERJADI?                         ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┌─────────────────────────────────────────────────────────────────┐
+│  LOCAL (.env file)              RAILWAY (Environment)           │
+│                                                                 │
+│  ✅ MIDTRANS_SERVER_KEY=...     ❌ (tidak ada)                  │
+│  ✅ MIDTRANS_CLIENT_KEY=...     ❌ (tidak ada)                  │
+│  ✅ MIDTRANS_IS_PRODUCTION=...  ❌ (tidak ada)                  │
+│                                                                 │
+│  Laravel baca dari .env         Laravel baca dari Railway Vars │
+│  ✅ Bisa buat snap token        ❌ NULL → Error!                │
+└─────────────────────────────────────────────────────────────────┘
+
+SOLUSI:
+1. Add variables ke Railway ← Kamu lakukan ini
+2. Railway auto deploy ulang
+3. Laravel baca variables dari Railway
+4. ✅ Config sudah ada → Midtrans bisa jalan!
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                         FILES YANG DIUPDATE                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+✅ nixpacks.toml
+   
+   SEBELUM:
+   cmd = "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+   
+   SESUDAH:
+   cmd = "php artisan config:clear && php artisan cache:clear && ..."
+        └── Auto clear cache setiap kali Railway start!
+
+Ini artinya: Kamu TIDAK perlu manual clear cache di Railway Shell lagi!
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                            SUMMARY                                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+TO-DO LIST:
+┌─────────────────────────────────────────────────────────────────┐
+│  [ ] 1. Push code baru ke GitHub (git push)                    │
+│  [ ] 2. Add 3 Midtrans variables ke Railway                    │
+│  [ ] 3. Tunggu Railway re-deploy selesai                       │
+│  [ ] 4. Test payment page                                      │
+│  [ ] 5. ✓ SELESAI! Payment sudah bisa!                         │
+└─────────────────────────────────────────────────────────────────┘
+
+ESTIMASI WAKTU: 5-10 menit total
+
+TINGKAT KESULITAN: ⭐⭐☆☆☆ (Mudah, tinggal copy-paste)
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                      JIKA BUTUH BANTUAN                           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Screenshot yang diperlukan jika masih error:
+1. Railway tab "Variables" (pastikan 3 variables terlihat)
+2. Railway tab "Deployments" (screenshot deployment log)
+3. Browser error page (full screenshot)
+4. Browser console (F12 → tab Console)
+
+Kirim ke AI assistant dengan penjelasan: "Sudah add variables tapi masih error"
+
+
+═══════════════════════════════════════════════════════════════════════
+                    🎉 GOOD LUCK & SEMANGAT! 🎉
+═══════════════════════════════════════════════════════════════════════
