@@ -13,7 +13,7 @@ class RoomSeeder extends Seeder
         // Ambil semua foto yang ada di storage/rooms
         $storagePhotos = collect(Storage::disk('public')->files('rooms'))
             ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
-            ->map(fn ($f) => Storage::disk('public')->url($f))
+            ->map(fn ($f) => '/storage/' . $f)
             ->values();
 
         for ($i = 1; $i <= 18; $i++) {

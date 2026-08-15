@@ -46,7 +46,7 @@ class DashboardController extends Controller
         if (empty($galleryImages)) {
             $galleryImages = collect(Storage::disk('public')->files('rooms'))
                 ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
-                ->map(fn ($f) => Storage::disk('public')->url($f))
+                ->map(fn ($f) => Room::formatImageUrl('storage/' . $f))
                 ->values()->take(6)->toArray();
         }
 
@@ -98,6 +98,25 @@ class DashboardController extends Controller
         ));
     }
 
+    public function invoices()
+    {
+        $user     = Auth::user();
+        $payments = $user->payments()->with('booking.room')->latest()->paginate(10);
+        return view('dashboard.customer.invoices', compact('payments'));
+    }
+
+    public function contract()
+    {
+        $user    = Auth::user();
+        $booking = Booking::where('user_id', $user->id)
+            ->with('room')
+            ->whereIn('status', ['siap_huni', 'dihuni'])
+            ->latest()
+            ->first();
+
+        return view('dashboard.customer.contract', compact('booking'));
+    }
+
     public function messages()
     {
         $user = Auth::user();
@@ -119,12 +138,12 @@ class DashboardController extends Controller
 
     private static function firstStorageImage(): ?string
     {
-        $image = Room::whereNotNull('image_url')->value('image_url');
+        $image = Room::whereNotNull('image_url')->first()?->image_url;
         if ($image) return $image;
 
         $file = collect(Storage::disk('public')->files('rooms'))
             ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
             ->first();
-        return $file ? Storage::disk('public')->url($file) : null;
+        return $file ? Room::formatImageUrl('storage/' . $file) : null;
     }
 }

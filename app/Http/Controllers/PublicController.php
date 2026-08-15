@@ -58,11 +58,11 @@ class PublicController extends Controller
             ? (Auth::user()->role === 'user' ? route('booking') : route('dashboard'))
             : route('login');
 
-        $heroImage = Room::whereNotNull('image_url')->value('image_url');
+        $heroImage = Room::whereNotNull('image_url')->first()?->image_url;
         if (! $heroImage) {
             $file = collect(Storage::disk('public')->files('rooms'))
                 ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))->first();
-            $heroImage = $file ? Storage::disk('public')->url($file) : null;
+            $heroImage = $file ? Room::formatImageUrl('storage/' . $file) : null;
         }
 
         return view('pages.landing', compact(
@@ -103,18 +103,18 @@ class PublicController extends Controller
             $raw = $r->getRawOriginal('image_urls');
             if (empty($raw)) return [];
             $decoded = json_decode($raw, true);
-            return is_array($decoded) ? $decoded : [];
+            return is_array($decoded) ? array_map([Room::class, 'formatImageUrl'], $decoded) : [];
         })->filter()->values()->toArray();
 
-        // Prioritas 2: image_url (single) dari DB — raw tanpa accessor
+        // Prioritas 2: image_url (single) dari DB
         $fromSingle = Room::all()->map(function ($r) {
-            return $r->getRawOriginal('image_url');
+            return $r->image_url;
         })->filter()->unique()->values()->toArray();
 
         // Prioritas 3: semua file langsung dari storage/rooms
         $fromStorage = collect(Storage::disk('public')->files('rooms'))
             ->filter(fn ($f) => preg_match('/\.(jpg|jpeg|png|webp)$/i', $f))
-            ->map(fn ($f) => Storage::disk('public')->url($f))
+            ->map(fn ($f) => Room::formatImageUrl('storage/' . $f))
             ->values()->toArray();
 
         // Gabung semua, buang duplikat
