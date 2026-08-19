@@ -9,7 +9,19 @@
         <h1 class="mt-4 text-3xl font-semibold text-[#1f2937]">Selamat Datang Kembali</h1>
         <p class="mt-3 text-sm leading-7 text-[#4b5563]">Masuk dengan email Anda atau lanjutkan dengan Google untuk pengalaman properti yang lebih mudah.</p>
 
-        <form action="{{ route('login.store') }}" method="POST" class="mt-8 space-y-4">
+        @if (session('status'))
+            <div class="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-800">
+                {{ $errors->first() }}
+            </div>
+        @endif
+
+        <form action="{{ route('login.store') }}" method="POST" class="mt-6 space-y-4">
             @csrf
             <input class="w-full rounded-2xl border border-[#e7e2d8] bg-[#faf8f5] px-4 py-3 outline-none ring-0" type="email" name="email" placeholder="Alamat Email" required>
             <input class="w-full rounded-2xl border border-[#e7e2d8] bg-[#faf8f5] px-4 py-3 outline-none ring-0" type="password" name="password" placeholder="Kata Sandi" required>

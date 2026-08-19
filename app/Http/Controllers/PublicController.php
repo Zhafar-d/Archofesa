@@ -180,10 +180,10 @@ class PublicController extends Controller
 
     public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('home');
+        return redirect()->route('login')->with('status', 'Anda telah berhasil keluar.');
     }
 
     public function dashboard()

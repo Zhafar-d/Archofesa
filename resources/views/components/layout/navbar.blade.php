@@ -16,8 +16,30 @@
         </nav>
 
         <div class="flex items-center gap-3">
-            <a href="{{ route('login') }}" class="hidden rounded-full border border-[#e7e2d8] px-4 py-2 text-sm font-medium text-[#374151] transition hover:border-[#c9a227] hover:text-[#c9a227] sm:inline-flex">Masuk</a>
-            <a href="{{ route('register') }}" class="inline-flex rounded-full bg-[#c9a227] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#c9a227]/20 transition hover:bg-[#b68d1f]">Booking Sekarang</a>
+            @auth
+                @php
+                    $dashboardUrl = match(auth()->user()->role ?? 'user') {
+                        'admin' => route('admin.dashboard'),
+                        'owner' => route('owner.dashboard'),
+                        default => route('customer.dashboard'),
+                    };
+                @endphp
+                <a href="{{ $dashboardUrl }}" class="inline-flex items-center gap-2 rounded-full border border-[#e7e2d8] px-3.5 py-1.5 text-sm font-semibold text-[#374151] transition hover:border-[#c9a227] hover:text-[#c9a227]">
+                    <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[#c9a227] text-xs font-bold text-white">
+                        {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+                    </span>
+                    <span class="hidden sm:inline">{{ auth()->user()->name ?? 'Dashboard' }}</span>
+                </a>
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <button type="submit" class="rounded-full border border-[#e7e2d8] px-3.5 py-1.5 text-sm font-semibold text-[#374151] transition hover:border-red-500 hover:text-red-500">
+                        Keluar
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="hidden rounded-full border border-[#e7e2d8] px-4 py-2 text-sm font-medium text-[#374151] transition hover:border-[#c9a227] hover:text-[#c9a227] sm:inline-flex">Masuk</a>
+                <a href="{{ route('register') }}" class="inline-flex rounded-full bg-[#c9a227] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#c9a227]/20 transition hover:bg-[#b68d1f]">Booking Sekarang</a>
+            @endauth
         </div>
     </div>
 </header>

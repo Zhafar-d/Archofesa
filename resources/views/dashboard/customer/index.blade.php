@@ -293,8 +293,6 @@
                 @endif
             </div>
         </section>
-
-        <x-layout.footer />
     </div>
 </div>
 @endsection

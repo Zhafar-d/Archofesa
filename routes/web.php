@@ -127,7 +127,7 @@ Route::get('/login',           [PublicController::class, 'login'])->name('login'
 Route::post('/login',          [PublicController::class, 'storeLogin'])->name('login.store');
 Route::get('/register',        [PublicController::class, 'register'])->name('register');
 Route::post('/register',       [PublicController::class, 'storeRegister'])->name('register.store');
-Route::post('/logout',         [PublicController::class, 'logout'])->name('logout')->middleware('auth');
+Route::match(['get', 'post'], '/logout', [PublicController::class, 'logout'])->name('logout');
 Route::get('/forgot-password', [PublicController::class, 'forgotPassword'])->name('forgot-password');
 
 Route::post('/firebase-login',          [FirebaseAuthController::class, 'login'])->name('firebase.login');
@@ -146,7 +146,7 @@ Route::middleware(['auth', 'check.role:user'])->group(function () {
     Route::get('/customer/payments',          [CustomerDashboardController::class, 'payments'])->name('customer.payments');
     Route::get('/customer/messages',          [CustomerDashboardController::class, 'messages'])->name('customer.messages');
     Route::get('/customer/notifications',     [CustomerDashboardController::class, 'notifications'])->name('customer.notifications');
-    Route::get('/customer/profile',           [CustomerDashboardController::class, 'profile'])->name('customer.profile');
+    Route::get('/customer/profile',           fn () => redirect()->route('profile.edit'))->name('customer.profile');
 
     Route::get('/booking',                    [BookingController::class, 'index'])->name('booking');
     Route::post('/booking',                   [BookingController::class, 'store'])->name('booking.store');

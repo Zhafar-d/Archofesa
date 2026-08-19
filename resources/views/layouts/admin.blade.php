@@ -55,13 +55,15 @@
         {{-- User + Logout --}}
         <div class="absolute bottom-0 left-0 right-0 border-t border-[#e7e2d8] bg-white p-5">
             <div class="flex items-center gap-3 rounded-xl bg-[#faf8f5] px-4 py-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c9a227] text-sm font-bold text-white">
-                    {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
-                </div>
-                <div class="min-w-0 flex-1">
-                    <p class="truncate text-sm font-semibold text-[#1f2937]">{{ auth()->user()->name ?? 'Admin' }}</p>
-                    <p class="truncate text-xs text-[#6b7280]">Administrator</p>
-                </div>
+                <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 min-w-0 flex-1 hover:opacity-80 transition" title="Lihat Profil">
+                    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c9a227] text-sm font-bold text-white">
+                        {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="truncate text-sm font-semibold text-[#1f2937]">{{ auth()->user()->name ?? 'Admin' }}</p>
+                        <p class="truncate text-xs text-[#6b7280]">Administrator</p>
+                    </div>
+                </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" title="Logout" class="text-[#9ca3af] transition hover:text-red-500">
