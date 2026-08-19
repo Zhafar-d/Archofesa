@@ -84,14 +84,19 @@
                 <div class="mt-4 flex items-center justify-between">
                     <p class="text-2xl font-bold text-slate-900">Rp{{ number_format($booking->monthly_rate, 0, ',', '.') }}/bln</p>
                     <div class="flex gap-3">
+                        <a href="{{ route('booking.status.detail', $booking) }}"
+                           class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 transition">
+                            Lacak Status
+                        </a>
                         <a href="{{ route('customer.payments') }}"
-                           class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+                           class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
                             Lihat Detail
                         </a>
                         @if (in_array($booking->status, ['dibayar', 'siap_huni', 'dihuni', 'menunggu_konfirmasi_owner']))
                             <a href="{{ route('booking.bukti', $booking) }}"
-                               class="rounded-lg border border-[#c9a227] px-4 py-2 text-sm font-semibold text-[#c9a227] hover:bg-[#faf8f5]">
-                                🖨️ Bukti
+                               class="rounded-lg border border-[#c9a227] px-4 py-2 text-sm font-semibold text-[#c9a227] hover:bg-[#faf8f5] transition flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 002 2zm4-12V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M9 7h6" /></svg>
+                                Bukti Booking
                             </a>
                         @endif
                         @if ($booking->status === 'dihuni')

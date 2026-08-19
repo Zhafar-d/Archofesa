@@ -24,9 +24,14 @@
                         <h2 class="mt-2 text-2xl font-semibold text-[#1f2937]">{{ $booking->room_code ?? ($booking->room->room_code ?? 'Kamar belum ditentukan') }}</h2>
                         <p class="mt-2 text-sm text-[#4b5563]">{{ optional($booking->move_in_date)->format('d M Y') }} sampai {{ optional($booking->move_out_date)->format('d M Y') }}</p>
                     </div>
-                    <div class="space-y-2 text-right">
-                        <p class="text-sm text-[#6b7280]">Status pembayaran</p>
-                        <span class="inline-flex rounded-full border border-[#e7e2d8] bg-[#f8fafc] px-3 py-1 text-sm font-semibold text-[#1f2937]">{{ ucfirst($booking->payment_status) }}</span>
+                    <div class="flex items-center gap-3">
+                        <div class="space-y-1 text-right">
+                            <p class="text-xs text-[#6b7280]">Status</p>
+                            <span class="inline-flex rounded-full border border-[#e7e2d8] bg-[#f8fafc] px-3 py-1 text-xs font-semibold text-[#1f2937]">{{ ucfirst($booking->status) }}</span>
+                        </div>
+                        <a href="{{ route('booking.status.detail', $booking) }}" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-slate-800">
+                            Lacak Status
+                        </a>
                     </div>
                 </div>
 

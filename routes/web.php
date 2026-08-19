@@ -150,6 +150,8 @@ Route::middleware(['auth', 'check.role:user'])->group(function () {
 
     Route::get('/booking',                    [BookingController::class, 'index'])->name('booking');
     Route::post('/booking',                   [BookingController::class, 'store'])->name('booking.store');
+    Route::get('/booking/status',             [BookingController::class, 'status'])->name('booking.status');
+    Route::get('/booking/{booking}/status',   [BookingController::class, 'statusDetail'])->name('booking.status.detail');
     Route::delete('/booking/{booking}/cancel', [BookingController::class, 'cancel'])->name('booking.cancel');
     Route::get('/riwayat-booking',            [BookingController::class, 'riwayat'])->name('riwayat-booking');
     Route::get('/customer/extend/{booking}',  [BookingController::class, 'extendForm'])->name('customer.extend.form');
