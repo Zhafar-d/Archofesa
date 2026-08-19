@@ -30,7 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 Auth::guard('web')->logout();
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
-                return redirect()->route('login')->with('status', 'Anda telah berhasil keluar.');
+                return redirect()->route('home')->with('status', 'Anda telah berhasil keluar.');
             }
             return redirect()->route('login')->with('error', 'Sesi Anda telah berakhir. Silakan login kembali.');
         });
