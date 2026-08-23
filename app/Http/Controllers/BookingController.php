@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -56,25 +57,33 @@ class BookingController extends Controller
         $moveInDate = \Carbon\Carbon::parse($validated['move_in_date']);
         $moveOutDate = $moveInDate->copy()->addMonth();
 
-        $room = Room::findOrFail($validated['room_id']);
+        $booking = DB::transaction(function () use ($validated, $moveInDate, $moveOutDate) {
+            $room = Room::where('id', $validated['room_id'])->lockForUpdate()->firstOrFail();
 
-        if (! $room->is_available) {
+            if (! $room->is_available) {
+                return null;
+            }
+
+            $newBooking = Booking::create([
+                'user_id' => Auth::id(),
+                'room_id' => $room->id,
+                'room_code' => $room->room_code,
+                'monthly_rate' => $room->price_monthly,
+                'status' => 'pending',
+                'payment_status' => 'pending',
+                'move_in_date' => $moveInDate->format('Y-m-d'),
+                'move_out_date' => $moveOutDate->format('Y-m-d'),
+                'notes' => 'Booking request submitted via web app.',
+            ]);
+
+            $room->update(['status' => 'occupied']);
+
+            return $newBooking;
+        });
+
+        if (! $booking) {
             return back()->with('error', 'Kamar ini sudah terisi atau di-booking. Silakan pilih kamar lain yang masih tersedia.');
         }
-
-        $booking = Booking::create([
-            'user_id' => Auth::id(),
-            'room_id' => $room->id,
-            'room_code' => $room->room_code,
-            'monthly_rate' => $room->price_monthly,
-            'status' => 'pending',
-            'payment_status' => 'pending',
-            'move_in_date' => $moveInDate->format('Y-m-d'),
-            'move_out_date' => $moveOutDate->format('Y-m-d'),
-            'notes' => 'Booking request submitted via web app.',
-        ]);
-
-        $room->update(['status' => 'occupied']);
 
         return redirect()->route('booking.status')->with('success', 'Pengajuan booking berhasil dibuat! Silakan pantau status pesanan Anda.');
     }
@@ -167,18 +176,20 @@ class BookingController extends Controller
             return back()->with('error', 'Booking ini sudah tidak dapat dibatalkan.');
         }
 
-        $booking->update([
-            'status' => 'dibatalkan',
-        ]);
-
-        if ($booking->room) {
-            $booking->room->update([
-                'status' => 'available',
+        DB::transaction(function () use ($booking) {
+            $booking->update([
+                'status' => 'dibatalkan',
             ]);
-        }
 
-        // Cancel any pending payments associated with this booking
-        $booking->payments()->whereIn('status', ['menunggu', 'pending'])->update(['status' => 'batal']);
+            if ($booking->room) {
+                $booking->room->update([
+                    'status' => 'available',
+                ]);
+            }
+
+            // Cancel any pending payments associated with this booking
+            $booking->payments()->whereIn('status', ['menunggu', 'pending'])->update(['status' => 'batal']);
+        });
 
         return redirect()->route('booking')->with('success', 'Pemesanan berhasil dibatalkan. Anda dapat memilih kamar kembali.');
     }
