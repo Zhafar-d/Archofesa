@@ -114,6 +114,11 @@ class BookingController extends Controller
             $booking = $latestBooking;
         }
 
+        // Auto-transition: siap_huni → dihuni ketika tanggal masuk sudah tercapai
+        if ($booking->status === 'siap_huni' && $booking->move_in_date && $booking->move_in_date->lte(now()->startOfDay())) {
+            $booking->update(['status' => 'dihuni']);
+        }
+
         return view('bookings.status', compact('booking'));
     }
 

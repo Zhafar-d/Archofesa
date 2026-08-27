@@ -154,9 +154,25 @@
                                 <p class="text-slate-500">Tanggal Keluar</p>
                                 <p class="mt-1 font-bold text-slate-800">{{ optional($booking->move_out_date)->translatedFormat('d M Y') ?? 'Menunggu' }}</p>
                             </div>
-                            <div class="col-span-2 sm:col-span-1">
+                            <div class="col-span-2 sm:col-span-1" id="dashboard-countdown" data-target="{{ $booking->move_out_date ? \Carbon\Carbon::parse($booking->move_out_date)->endOfDay()->toIso8601String() : '' }}">
                                 <p class="text-slate-500">Sisa Waktu</p>
-                                <p class="mt-1 font-bold text-slate-800">{{ $remainingDays ?? 0 }} Hari</p>
+                                @if (in_array($booking->status, ['siap_huni', 'dihuni']) && $booking->move_out_date)
+                                    <div class="mt-1.5 flex items-center gap-1">
+                                        <span class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-2 py-1 font-mono text-xs font-bold text-white min-w-[28px]" id="dash-days">{{ str_pad($remainingDays, 2, '0', STR_PAD_LEFT) }}</span>
+                                        <span class="text-[10px] text-slate-400">h</span>
+                                        <span class="text-slate-400 font-bold">:</span>
+                                        <span class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-2 py-1 font-mono text-xs font-bold text-white min-w-[28px]" id="dash-hours">00</span>
+                                        <span class="text-[10px] text-slate-400">j</span>
+                                        <span class="text-slate-400 font-bold">:</span>
+                                        <span class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-2 py-1 font-mono text-xs font-bold text-white min-w-[28px]" id="dash-mins">00</span>
+                                        <span class="text-[10px] text-slate-400">m</span>
+                                        <span class="text-slate-400 font-bold">:</span>
+                                        <span class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-2 py-1 font-mono text-xs font-bold text-white min-w-[28px]" id="dash-secs">00</span>
+                                        <span class="text-[10px] text-slate-400">d</span>
+                                    </div>
+                                @else
+                                    <p class="mt-1 font-bold text-slate-800">{{ $remainingDays ?? 0 }} Hari</p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -359,3 +375,47 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    // Live Countdown Sisa Waktu Sewa (Dashboard)
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('dashboard-countdown');
+        if (!container || !container.dataset.target) return;
+
+        const targetDate = new Date(container.dataset.target).getTime();
+        const elDays = document.getElementById('dash-days');
+        const elHours = document.getElementById('dash-hours');
+        const elMins = document.getElementById('dash-mins');
+        const elSecs = document.getElementById('dash-secs');
+
+        if (!elDays) return; // countdown elements not rendered (status not siap_huni/dihuni)
+
+        function updateDashTimer() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                if (elDays) elDays.textContent = '00';
+                if (elHours) elHours.textContent = '00';
+                if (elMins) elMins.textContent = '00';
+                if (elSecs) elSecs.textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (elDays) elDays.textContent = String(days).padStart(2, '0');
+            if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+            if (elMins) elMins.textContent = String(minutes).padStart(2, '0');
+            if (elSecs) elSecs.textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateDashTimer();
+        setInterval(updateDashTimer, 1000);
+    });
+</script>
+@endpush

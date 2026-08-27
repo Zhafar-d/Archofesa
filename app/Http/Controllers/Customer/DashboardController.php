@@ -21,6 +21,11 @@ class DashboardController extends Controller
             ->latest()
             ->first();
 
+        // Auto-transition: siap_huni → dihuni ketika tanggal masuk sudah tercapai
+        if ($booking && $booking->status === 'siap_huni' && $booking->move_in_date && $booking->move_in_date->lte(now()->startOfDay())) {
+            $booking->update(['status' => 'dihuni']);
+        }
+
         $payments      = $user->payments()->with('booking')->latest()->take(3)->get();
         $reviews       = $user->reviews()->latest()->take(3)->get();
         $announcements = [];

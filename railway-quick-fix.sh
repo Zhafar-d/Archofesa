@@ -22,8 +22,8 @@ php artisan storage:link
 echo "6️⃣ Checking database connection..."
 php artisan db:show
 
-echo "7️⃣ Checking migration status..."
-php artisan migrate:status
+echo "7️⃣ Running migrations..."
+php artisan migrate --force
 
 echo "8️⃣ Optimizing for production..."
 php artisan config:cache
