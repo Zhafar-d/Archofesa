@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-app')
+@extends('layouts.owner')
 
 @section('title', 'Owner Chat · ARCHOFESA KOST')
 

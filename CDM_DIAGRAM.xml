@@ -1,0 +1,147 @@
+<mxfile host="app.diagrams.net" modified="2026-08-29T14:25:00.000Z" agent="Antigravity AI" version="21.0.0" type="device">
+  <diagram id="archofesa_cdm_table" name="Conceptual Data Model (CDM) - Table Format">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================== -->
+        <!-- HEADER TITLE                               -->
+        <!-- ========================================== -->
+        <mxCell id="cdm_hdr" value="&lt;b style='font-size:16px;'&gt;CONCEPTUAL DATA MODEL (CDM) &amp;mdash; ARCHOFESA KOST&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;color:#333333;'&gt;Model Data Konseptual Format Tabel: Entitas, Kolom Identifier (#), Atribut, Tipe Data, dan Kardinalitas Relasi&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1400" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ENTITY TABLE: USER ================= -->
+        <mxCell id="tbl_user" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:left; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; text-align:center; font-weight:bold; font-size:12px;'&gt;&lt;td colspan='3'&gt;USER&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#F2F2F2; font-weight:bold; font-size:10px; text-align:center;'&gt;&lt;td style='width:25px;'&gt;Id&lt;/td&gt;&lt;td&gt;Atribut&lt;/td&gt;&lt;td style='width:85px;'&gt;Tipe Data&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;font-weight:bold;'&gt;#&lt;/td&gt;&lt;td&gt;&lt;b&gt;id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Integer &amp;lt;PK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;name&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;email&lt;/td&gt;&lt;td&gt;String &amp;lt;UK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;password&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;role&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;phone&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;address&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;avatar&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;google_id&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;email_verified_at&lt;/td&gt;&lt;td&gt;Datetime&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="280" height="285" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ENTITY TABLE: ROOM ================= -->
+        <mxCell id="tbl_room" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:left; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; text-align:center; font-weight:bold; font-size:12px;'&gt;&lt;td colspan='3'&gt;ROOM&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#F2F2F2; font-weight:bold; font-size:10px; text-align:center;'&gt;&lt;td style='width:25px;'&gt;Id&lt;/td&gt;&lt;td&gt;Atribut&lt;/td&gt;&lt;td style='width:85px;'&gt;Tipe Data&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;font-weight:bold;'&gt;#&lt;/td&gt;&lt;td&gt;&lt;b&gt;id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Integer &amp;lt;PK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;room_code&lt;/td&gt;&lt;td&gt;String &amp;lt;UK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;size&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;price_monthly&lt;/td&gt;&lt;td&gt;Money / Decimal&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;status&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;description&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;image_url&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="130" width="270" height="215" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ENTITY TABLE: BOOKING ================= -->
+        <mxCell id="tbl_booking" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:left; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; text-align:center; font-weight:bold; font-size:12px;'&gt;&lt;td colspan='3'&gt;BOOKING&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#F2F2F2; font-weight:bold; font-size:10px; text-align:center;'&gt;&lt;td style='width:25px;'&gt;Id&lt;/td&gt;&lt;td&gt;Atribut&lt;/td&gt;&lt;td style='width:85px;'&gt;Tipe Data&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;font-weight:bold;'&gt;#&lt;/td&gt;&lt;td&gt;&lt;b&gt;id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Integer &amp;lt;PK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;room_code&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;monthly_rate&lt;/td&gt;&lt;td&gt;Money / Decimal&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;status&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;payment_method&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;payment_status&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;move_in_date&lt;/td&gt;&lt;td&gt;Date&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;move_out_date&lt;/td&gt;&lt;td&gt;Date&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;notes&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;admin_notes&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;owner_notes&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="585" y="130" width="310" height="305" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ENTITY TABLE: PAYMENT ================= -->
+        <mxCell id="tbl_payment" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:left; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; text-align:center; font-weight:bold; font-size:12px;'&gt;&lt;td colspan='3'&gt;PAYMENT&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#F2F2F2; font-weight:bold; font-size:10px; text-align:center;'&gt;&lt;td style='width:25px;'&gt;Id&lt;/td&gt;&lt;td&gt;Atribut&lt;/td&gt;&lt;td style='width:85px;'&gt;Tipe Data&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;font-weight:bold;'&gt;#&lt;/td&gt;&lt;td&gt;&lt;b&gt;id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Integer &amp;lt;PK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;amount&lt;/td&gt;&lt;td&gt;Money / Decimal&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;status&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;payment_method&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;paid_at&lt;/td&gt;&lt;td&gt;Datetime&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;reference&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;midtrans_order_id&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;gateway_response&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="595" y="530" width="290" height="260" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ENTITY TABLE: REVIEW ================= -->
+        <mxCell id="tbl_review" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:left; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; text-align:center; font-weight:bold; font-size:12px;'&gt;&lt;td colspan='3'&gt;REVIEW&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#F2F2F2; font-weight:bold; font-size:10px; text-align:center;'&gt;&lt;td style='width:25px;'&gt;Id&lt;/td&gt;&lt;td&gt;Atribut&lt;/td&gt;&lt;td style='width:85px;'&gt;Tipe Data&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;font-weight:bold;'&gt;#&lt;/td&gt;&lt;td&gt;&lt;b&gt;id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Integer &amp;lt;PK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;rating&lt;/td&gt;&lt;td&gt;Integer&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;comment&lt;/td&gt;&lt;td&gt;Text&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;status&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="530" width="280" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ENTITY TABLE: OWNER_CONFIRMATION ================= -->
+        <mxCell id="tbl_konf" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:left; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; text-align:center; font-weight:bold; font-size:12px;'&gt;&lt;td colspan='3'&gt;OWNER_CONFIRMATION&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#F2F2F2; font-weight:bold; font-size:10px; text-align:center;'&gt;&lt;td style='width:25px;'&gt;Id&lt;/td&gt;&lt;td&gt;Atribut&lt;/td&gt;&lt;td style='width:85px;'&gt;Tipe Data&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;font-weight:bold;'&gt;#&lt;/td&gt;&lt;td&gt;&lt;b&gt;id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Integer &amp;lt;PK&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;*&lt;/td&gt;&lt;td&gt;status&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='text-align:center;'&gt;o&lt;/td&gt;&lt;td&gt;confirmed_at&lt;/td&gt;&lt;td&gt;Datetime&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="530" width="270" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- ================= RELATIONSHIPS ================= -->
+
+        <!-- USER (1,1) - - - mengajukan - - - (0,N) BOOKING -->
+        <mxCell id="rel_u_b" value="mengajukan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_user" target="tbl_booking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_b_src" value="1,1" style="edgeLabel;html=1;align=left;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_b">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_b_tgt" value="0,N" style="edgeLabel;html=1;align=right;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_b">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ROOM (1,1) - - - dipesan dalam - - - (0,N) BOOKING -->
+        <mxCell id="rel_r_b" value="dipesan dalam" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_room" target="tbl_booking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_r_b_src" value="1,1" style="edgeLabel;html=1;align=right;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_r_b">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_r_b_tgt" value="0,N" style="edgeLabel;html=1;align=left;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_r_b">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- BOOKING (0,1) - - - menghasilkan - - - (0,N) PAYMENT -->
+        <mxCell id="rel_b_p" value="menghasilkan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_booking" target="tbl_payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_b_p_src" value="0,1" style="edgeLabel;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_b_p">
+          <mxGeometry x="-0.7" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_b_p_tgt" value="0,N" style="edgeLabel;html=1;align=left;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_b_p">
+          <mxGeometry x="0.7" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- USER (1,1) - - - melakukan - - - (0,N) PAYMENT -->
+        <mxCell id="rel_u_p" value="melakukan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_user" target="tbl_payment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="460" />
+              <mxPoint x="640" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_u_p_src" value="1,1" style="edgeLabel;html=1;align=left;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_p">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_p_tgt" value="0,N" style="edgeLabel;html=1;align=right;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_p">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- USER (1,1) - - - menulis - - - (0,N) REVIEW -->
+        <mxCell id="rel_u_r" value="menulis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_user" target="tbl_review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_r_src" value="1,1" style="edgeLabel;html=1;align=right;verticalAlign=top;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_r">
+          <mxGeometry x="-0.7" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_r_tgt" value="0,N" style="edgeLabel;html=1;align=right;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_r">
+          <mxGeometry x="0.7" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- BOOKING (1,1) - - - dikonfirmasi dalam - - - (0,1) KONFIRMASI_OWNER -->
+        <mxCell id="rel_b_k" value="dikonfirmasi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_booking" target="tbl_konf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="460" />
+              <mxPoint x="1295" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_b_k_src" value="1,1" style="edgeLabel;html=1;align=left;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_b_k">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_b_k_tgt" value="0,1" style="edgeLabel;html=1;align=right;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_b_k">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- USER(Owner) (1,1) - - - memvalidasi - - - (0,N) KONFIRMASI_OWNER -->
+        <mxCell id="rel_u_k" value="divalidasi oleh" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;" edge="1" parent="1" source="tbl_konf" target="tbl_user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1295" y="800" />
+              <mxPoint x="120" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_u_k_src" value="0,N" style="edgeLabel;html=1;align=right;verticalAlign=top;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_k">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_k_tgt" value="1,1 (Owner)" style="edgeLabel;html=1;align=left;verticalAlign=bottom;fontSize=11;fontColor=#000000;fontStyle=1;" vertex="1" connectable="0" parent="rel_u_k">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- LEGEND TABLE -->
+        <mxCell id="legend_box" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:10px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#F2F2F2; font-weight:bold;'&gt;&lt;td&gt;NOTASI IDENTIFIER (Id)&lt;/td&gt;&lt;td&gt;KARDINALITAS RELASI&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;#&lt;/b&gt; Primary Identifier (PK) &amp;nbsp;|&amp;nbsp; &lt;b&gt;*&lt;/b&gt; Mandatory (Wajib) &amp;nbsp;|&amp;nbsp; &lt;b&gt;o&lt;/b&gt; Optional (Boleh Null)&lt;/td&gt;&lt;td&gt;&lt;b&gt;(1,1)&lt;/b&gt; Tepat Satu &amp;nbsp;|&amp;nbsp; &lt;b&gt;(0,1)&lt;/b&gt; Nol atau Satu &amp;nbsp;|&amp;nbsp; &lt;b&gt;(0,N)&lt;/b&gt; Nol sampai Banyak&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="380" y="850" width="740" height="55" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
