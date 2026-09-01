@@ -6,6 +6,24 @@
 <div class="px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
     <div class="mx-auto max-w-7xl space-y-6">
         
+        {{-- Banner Notifikasi Jika Belum Ada Nomor WhatsApp (Misal Daftar via Google) --}}
+        @if(empty(auth()->user()->phone))
+            <div class="rounded-2xl border border-amber-200 bg-amber-50 p-4 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-amber-700 font-bold text-base">
+                        📱
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-amber-900">Nomor WhatsApp Belum Terhubung</p>
+                        <p class="text-xs text-amber-700">Lengkapi nomor WhatsApp aktif Anda agar bot kami dapat mengirimkan notifikasi tagihan sewa dan konfirmasi pemilik secara otomatis.</p>
+                    </div>
+                </div>
+                <a href="{{ route('profile.edit') }}" class="shrink-0 rounded-full bg-[#c9a227] px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-[#b68d1f]">
+                    Lengkapi Sekarang &rarr;
+                </a>
+            </div>
+        @endif
+
         <!-- Header Hero Banner (Deskripsi Bersih & Modern tanpa Foto) -->
         <header class="rounded-3xl border border-[#e7e2d8] bg-white p-6 shadow-sm sm:p-8 lg:p-10">
             <div class="max-w-3xl">

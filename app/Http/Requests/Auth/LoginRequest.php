@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -28,7 +30,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'login' => ['sometimes', 'string'],
+            'email' => ['sometimes', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -42,14 +45,38 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $loginInput = trim((string) $this->input('login', $this->input('email')));
+        $password = $this->input('password');
+
+        $isEmail = filter_var($loginInput, FILTER_VALIDATE_EMAIL);
+        $user = null;
+
+        if ($isEmail) {
+            $user = User::where('email', $loginInput)->first();
+        } else {
+            $cleanedPhone = preg_replace('/[^0-9]/', '', $loginInput);
+            $localPhone = str_starts_with($cleanedPhone, '62') ? '0' . substr($cleanedPhone, 2) : $cleanedPhone;
+            $intlPhone = str_starts_with($cleanedPhone, '0') ? '62' . substr($cleanedPhone, 1) : $cleanedPhone;
+
+            $user = User::where(function ($q) use ($loginInput, $cleanedPhone, $localPhone, $intlPhone) {
+                $q->where('phone', $loginInput)
+                  ->orWhere('phone', $cleanedPhone)
+                  ->orWhere('phone', $localPhone)
+                  ->orWhere('phone', $intlPhone)
+                  ->orWhere('phone', '+' . $intlPhone);
+            })->first();
+        }
+
+        if (! $user || ! Hash::check($password, $user->password)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
+                'login' => trans('auth.failed'),
                 'email' => trans('auth.failed'),
             ]);
         }
 
+        Auth::login($user, $this->boolean('remember'));
         RateLimiter::clear($this->throttleKey());
     }
 
@@ -69,7 +96,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            'login' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -81,6 +108,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        $loginInput = $this->input('login', $this->input('email'));
+        return Str::transliterate(Str::lower($loginInput).'|'.$this->ip());
     }
 }

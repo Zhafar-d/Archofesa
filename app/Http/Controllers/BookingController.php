@@ -52,7 +52,17 @@ class BookingController extends Controller
             'room_id' => ['required', 'exists:rooms,id'],
             'move_in_date' => ['required', 'date'],
             'move_out_date' => ['nullable', 'date'],
+            'phone' => ['required', 'string', 'min:9', 'max:20'],
+        ], [
+            'phone.required' => 'Nomor WhatsApp wajib diisi untuk menerima rincian dan konfirmasi sewa.',
+            'phone.min' => 'Nomor WhatsApp minimal 9 digit.',
         ]);
+
+        // Simpan / Perbarui nomor WhatsApp ke profil user yang sedang login
+        $user = Auth::user();
+        if ($user) {
+            $user->update(['phone' => trim($validated['phone'])]);
+        }
 
         $moveInDate = \Carbon\Carbon::parse($validated['move_in_date']);
         $moveOutDate = $moveInDate->copy()->addMonth();

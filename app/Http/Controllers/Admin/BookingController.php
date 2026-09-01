@@ -67,6 +67,37 @@ class BookingController extends Controller
             'payment_status' => 'paid',
         ]);
 
+        if ($booking->room) {
+            $booking->room->update(['status' => 'occupied']);
+        }
+
         return redirect()->route('admin.bookings.show', $booking)->with('success', 'Booking dikonfirmasi dan status dihuni aktif.');
+    }
+
+    /**
+     * Hapus data booking (Aksi Delete Admin).
+     */
+    public function destroy(Booking $booking)
+    {
+        $room = $booking->room;
+
+        // Hapus pembayaran terkait jika ada
+        $booking->payments()->delete();
+
+        // Hapus booking
+        $booking->delete();
+
+        // Cek apakah kamar masih memiliki booking aktif lain
+        if ($room) {
+            $hasOtherActiveBooking = Booking::where('room_id', $room->id)
+                ->whereIn('status', ['pending', 'menunggu_pembayaran', 'dibayar', 'menunggu_konfirmasi_owner', 'siap_huni', 'dihuni'])
+                ->exists();
+
+            if (! $hasOtherActiveBooking) {
+                $room->update(['status' => 'available']);
+            }
+        }
+
+        return redirect()->route('admin.bookings.index')->with('success', "Data booking #{$booking->id} berhasil dihapus.");
     }
 }

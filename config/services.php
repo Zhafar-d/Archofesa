@@ -41,4 +41,10 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI', 'http://127.0.0.1:8000/auth/google/callback'),
     ],
 
+    'whatsapp' => [
+        'provider' => env('WA_PROVIDER', 'fonnte'),
+        'token' => env('FONNTE_TOKEN', env('WA_TOKEN')),
+        'endpoint' => env('WA_ENDPOINT', 'https://api.fonnte.com/send'),
+    ],
+
 ];

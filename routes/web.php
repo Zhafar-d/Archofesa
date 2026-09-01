@@ -168,16 +168,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/dashboard',                    [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('/chat',                         [ChatController::class, 'adminChat'])->name('chat');
 
-    Route::resource('bookings', AdminBookingController::class)->only(['index', 'show']);
+    Route::resource('bookings', AdminBookingController::class)->only(['index', 'show', 'destroy']);
     Route::post('/bookings/{booking}/process-payment',        [AdminBookingController::class, 'processPayment'])->name('bookings.process-payment');
     Route::post('/bookings/{booking}/confirm-to-owner',       [AdminBookingController::class, 'confirmToOwner'])->name('bookings.confirm-to-owner');
     Route::post('/bookings/{booking}/confirm-ready-to-occupy',[AdminBookingController::class, 'confirmReadyToOccupy'])->name('bookings.confirm-ready-to-occupy');
 
     Route::resource('kamar', AdminKamarController::class)->parameters(['kamar' => 'room']);
-    Route::resource('pembayaran', AdminPembayaranController::class)->only(['index']);
+    Route::resource('pembayaran', AdminPembayaranController::class)->only(['index', 'destroy']);
     Route::post('/pembayaran/{payment}/mark-paid',            [AdminPembayaranController::class, 'markPaid'])->name('pembayaran.mark-paid');
-    Route::resource('penghuni', AdminPenghuniController::class)->only(['index']);
+    Route::resource('penghuni', AdminPenghuniController::class)->only(['index', 'destroy']);
     Route::put('/penghuni/{booking}/update-due-date',         [AdminPenghuniController::class, 'updateDueDate'])->name('penghuni.update-due-date');
+    Route::post('/penghuni/{booking}/checkout',               [AdminPenghuniController::class, 'checkout'])->name('penghuni.checkout');
+    Route::post('/penghuni/{booking}/send-reminder',          [AdminPenghuniController::class, 'sendReminder'])->name('penghuni.send-reminder');
 });
 
 // ── Owner ────────────────────────────────────────────────────────────────────
@@ -186,6 +188,7 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->grou
     Route::get('/chat',                 [ChatController::class, 'ownerChat'])->name('chat');
     Route::get('/konfirmasi',           [KonfirmasiController::class, 'index'])->name('konfirmasi.index');
     Route::post('/konfirmasi/{booking}',[KonfirmasiController::class, 'confirm'])->name('konfirmasi.confirm');
+    Route::post('/konfirmasi/{booking}/reject', [KonfirmasiController::class, 'reject'])->name('konfirmasi.reject');
     Route::get('/laporan',              [LaporanController::class, 'index'])->name('laporan.index');
 });
 

@@ -1,139 +1,151 @@
 # Dokumentasi Lengkap Diagram Sistem & Perancangan ARCHOFESA KOST
 
 Dokumen ini merupakan panduan perancangan sistem informasi lengkap untuk **ARCHOFESA KOST**, yang mencakup:
-1. **Diagram Konteks (*Context Diagram / DFD Level 0*)**
-2. **Diagram Kasus Penggunaan (*Use Case Diagram*)**
-3. **Diagram Alur Bisnis (*Cross-Functional Swimlane Flowchart*)**
-4. **Diagram Status Mesin (*Booking Lifecycle State Machine*)**
-5. **Model Data Konseptual (*Conceptual Data Model - CDM*)**
-6. **Model Data Fisik (*Physical Data Model - PDM / Relasi Database MySQL*)**
+1. **DFD Level 0 (*Context Diagram / Diagram Konteks*)**
+2. **DFD Level 1 (*Dekomposisi Proses Utama & Data Store*)**
+3. **DFD Level 2 (*Dekomposisi Detail Proses 3.0 Transaksi Reservasi*)**
+4. **Diagram Kasus Penggunaan (*Use Case Diagram*)**
+5. **Diagram Alur Bisnis (*Cross-Functional Swimlane Flowchart*)**
+6. **Diagram Status Mesin (*Booking Lifecycle State Machine*)**
+7. **Model Data Konseptual (*Conceptual Data Model - CDM*)**
+8. **Model Data Fisik (*Physical Data Model - PDM / Relasi Database MySQL*)**
 
 ---
 
-## 1. Diagram Konteks (*Context Diagram / DFD Level 0*)
+## 1. DFD Level 0 (Diagram Konteks / Context Diagram)
+
+Diagram Konteks mendefinisikan batas sistem (*system boundary*) secara menyeluruh, 1 proses sentral `0.0`, dan interaksi dengan 5 entitas eksternal (*terminator*).
 
 ```mermaid
 flowchart TD
-    classDef sys fill:#1e293b,stroke:#0f172a,stroke-width:3px,color:#ffffff;
-    classDef cust fill:#f0f9ff,stroke:#0284c7,stroke-width:2px,color:#0369a1;
-    classDef admin fill:#fffbeb,stroke:#d97706,stroke-width:2px,color:#b45309;
-    classDef owner fill:#faf5ff,stroke:#7c3aed,stroke-width:2px,color:#6d28d9;
-    classDef midtrans fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#15803d;
-    classDef auth fill:#f1f5f9,stroke:#64748b,stroke-width:2px,color:#334155;
+    classDef sys fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#ffffff;
+    classDef ext fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000;
 
     SYS(("0.0 SISTEM INFORMASI<br>PENGELOLAAN & RESERVASI<br>ARCHOFESA KOST")):::sys
 
-    CUST["PENYEWA<br>(CUSTOMER)"]:::cust
-    ADMIN["ADMINISTRATOR<br>(ADMIN)"]:::admin
-    OWNER["PEMILIK KOS<br>(OWNER)"]:::owner
-    MIDTRANS["PAYMENT GATEWAY<br>(MIDTRANS)"]:::midtrans
-    AUTH_EXT["GOOGLE OAUTH /<br>FIREBASE AUTH"]:::auth
+    CUST["PENYEWA<br>(CUSTOMER)"]:::ext
+    ADMIN["ADMINISTRATOR<br>(ADMIN)"]:::ext
+    OWNER["PEMILIK KOS<br>(OWNER)"]:::ext
+    MIDTRANS["PAYMENT GATEWAY<br>(MIDTRANS)"]:::ext
+    AUTH_EXT["GOOGLE OAUTH /<br>FIREBASE AUTH"]:::ext
 
-    CUST -->|"1. Data Registrasi & Login<br>2. Data Form Booking & Tgl Masuk<br>3. Data Profil & Nomor Telepon<br>4. Pengajuan Perpanjangan Sewa<br>5. Rating & Ulasan Kamar"| SYS
-    SYS -->|"1. Katalog Kamar & Fasilitas<br>2. Rincian Tagihan & Invoice Midtrans<br>3. Status Tracking Real-Time<br>4. Bukti Reservasi Digital<br>5. Live Countdown Sisa Waktu Sewa"| CUST
+    CUST -->|"1. Data Akun & Profil<br>2. Form Booking & Tgl Masuk<br>3. Pengajuan Perpanjang Sewa<br>4. Ulasan & Rating"| SYS
+    SYS -->|"1. Katalog Kamar & Fasilitas<br>2. Invoice & Snap Token<br>3. Status Tracking Realtime<br>4. Bukti Reservasi Digital<br>5. Live Countdown Sisa Sewa"| CUST
 
-    ADMIN -->|"1. Data Master Kamar (Harga/Fasilitas/Foto)<br>2. Verifikasi / Penolakan Booking<br>3. Penerbitan Tagihan Pembayaran<br>4. Teruskan Booking Lunas ke Owner<br>5. Update Jatuh Tempo Penghuni"| SYS
-    SYS -->|"1. Notifikasi Pengajuan Booking Baru<br>2. Laporan Transaksi Pembayaran<br>3. Statistik Okupansi Kamar Kos<br>4. Daftar Penghuni Aktif & Jatuh Tempo"| ADMIN
+    ADMIN -->|"1. Master Kamar (CRUD/Harga/Foto)<br>2. Verifikasi Booking & Tagihan<br>3. Teruskan Booking ke Owner<br>4. Update Jatuh Tempo"| SYS
+    SYS -->|"1. Notifikasi Booking Baru<br>2. Laporan Status Pembayaran<br>3. Data Okupansi & Statistik<br>4. Daftar Penghuni & Jatuh Tempo"| ADMIN
 
-    OWNER -->|"1. Konfirmasi Kesiapan Kamar (SIAP_HUNI)<br>2. Catatan & Validasi Kunci Kamar"| SYS
-    SYS -->|"1. Notifikasi Booking Lunas Siap Huni<br>2. Laporan Keuangan & Pendapatan Kos<br>3. Laporan Okupansi & Hunian"| OWNER
+    OWNER -->|"1. Konfirmasi Kesiapan Kamar (SIAP_HUNI)<br>2. Catatan Kunci & Kamar"| SYS
+    SYS -->|"1. Notifikasi Booking Lunas Siap Huni<br>2. Laporan Pendapatan Bersih<br>3. Statistik Okupansi & Hunian"| OWNER
 
-    SYS -->|"1. Parameter Transaksi (Order ID, Amount)<br>2. Customer & Item Details<br>3. Request Snap Token API"| MIDTRANS
-    MIDTRANS -->|"1. Webhook Notification (Settlement/Cancel)<br>2. Status Transaksi & Ref Pembayaran"| SYS
+    SYS -->|"1. Order ID, Gross Amount, Item Info<br>2. Request Snap Token API"| MIDTRANS
+    MIDTRANS -->|"1. Webhook (Settlement/Cancel/Expire)<br>2. Status & No. Referensi"| SYS
 
-    SYS -->|"1. Permintaan Redirect OAuth"| AUTH_EXT
-    AUTH_EXT -->|"1. Token Akses & Profil Akun (Email/Nama/Avatar)"| SYS
+    SYS -->|"1. Request Redirect OAuth SSO"| AUTH_EXT
+    AUTH_EXT -->|"1. Access Token & Profil (Email/Nama)"| SYS
 ```
 
 ---
 
-## 2. Diagram Kasus Penggunaan (*Use Case Diagram*)
+## 2. DFD Level 1 (Dekomposisi Proses Utama)
+
+DFD Level 1 memecah Proses `0.0` menjadi **6 Sub-Proses Utama** dan menghubungkannya dengan **5 Data Store Database**.
 
 ```mermaid
-flowchart LR
-    classDef actor fill:#f8fafc,stroke:#334155,stroke-width:2px,color:#0f172a;
-    classDef uc fill:#ffffff,stroke:#0284c7,stroke-width:1.5px,color:#0f172a;
-    classDef ucAdmin fill:#ffffff,stroke:#d97706,stroke-width:1.5px,color:#0f172a;
-    classDef ucOwner fill:#ffffff,stroke:#7c3aed,stroke-width:1.5px,color:#0f172a;
-    classDef ucMidtrans fill:#ffffff,stroke:#16a34a,stroke-width:1.5px,color:#0f172a;
+flowchart TD
+    classDef proc fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000;
+    classDef ds fill:#f8fafc,stroke:#000000,stroke-width:1px,color:#000000;
+    classDef ext fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000;
 
-    subgraph SYSTEM["BATASAN SISTEM (ARCHOFESA KOST)"]
-        UC_AUTH(["Login & Registrasi Akun"]):::uc
-        UC_GOOGLE(["Login via Google OAuth"]):::uc
-        UC_PROFILE(["Kelola Profil & WhatsApp"]):::uc
+    CUST["PENYEWA (CUSTOMER)"]:::ext
+    ADMIN["ADMIN (ADMINISTRATOR)"]:::ext
+    OWNER["OWNER (PEMILIK)"]:::ext
+    MIDTRANS["MIDTRANS GATEWAY"]:::ext
 
-        UC_BROWSE(["Melihat Katalog & Detail Kamar"]):::uc
-        UC_BOOKING(["Mengajukan Pemesanan Kamar"]):::uc
-        UC_TRACK(["Melacak Status Pemesanan Real-Time"]):::uc
-        UC_PAY(["Melakukan Pembayaran Online"]):::uc
-        UC_SNAP(["Generate Snap Token & API"]):::ucMidtrans
-        UC_BUKTI(["Mencetak Bukti Reservasi"]):::uc
-        UC_COUNTDOWN(["Memantau Live Countdown Sisa Sewa"]):::uc
-        UC_EXTEND(["Mengajukan Perpanjangan Sewa"]):::uc
-        UC_REVIEW(["Memberikan Rating & Ulasan"]):::uc
+    P1(("1.0 Manajemen<br>Autentikasi & Profil")):::proc
+    P2(("2.0 Manajemen<br>Master Kamar")):::proc
+    P3(("3.0 Transaksi<br>Pemesanan Kamar")):::proc
+    P4(("4.0 Pembayaran &<br>Webhook Gateway")):::proc
+    P5(("5.0 Validasi &<br>Konfirmasi Owner")):::proc
+    P6(("6.0 Monitoring Hunian,<br>Countdown & Laporan")):::proc
 
-        UC_KAMAR(["Mengelola Data Kamar (CRUD/Foto)"]):::ucAdmin
-        UC_VERIFY(["Memverifikasi Booking"]):::ucAdmin
-        UC_INVOICE(["Menerbitkan Tagihan"]):::ucAdmin
-        UC_FORWARD(["Meneruskan Booking ke Owner"]):::ucAdmin
-        UC_PENGHUNI(["Kelola Data Penghuni & Jatuh Tempo"]):::ucAdmin
-        UC_TX(["Memantau Riwayat Transaksi"]):::ucAdmin
+    D1[("D1: users")]:::ds
+    D2[("D2: rooms")]:::ds
+    D3[("D3: bookings")]:::ds
+    D4[("D4: payments")]:::ds
+    D5[("D5: konfirmasi_owner")]:::ds
 
-        UC_REVIEW_OWNER(["Meninjau Booking Lunas"]):::ucOwner
-        UC_CONFIRM(["Konfirmasi Kesiapan Kamar (Siap Huni)"]):::ucOwner
-        UC_REPORT_FIN(["Melihat Laporan Pendapatan"]):::ucOwner
-        UC_REPORT_OCC(["Melihat Statistik Okupansi"]):::ucOwner
-        UC_WEBHOOK(["Webhook Callback Transaksi"]):::ucMidtrans
-    end
+    %% Aliran Proses 1.0
+    CUST -->|"Data Akun & Profil"| P1
+    P1 -->|"Simpan/Update Akun"| D1
 
-    CUST(("Penyewa<br>(Customer)")):::actor
-    ADMIN(("Administrator")):::actor
-    OWNER(("Pemilik Kos<br>(Owner)")):::actor
-    MIDTRANS(("Midtrans<br>Gateway")):::actor
-    GOOGLE(("Google<br>OAuth")):::actor
+    %% Aliran Proses 2.0
+    ADMIN -->|"CRUD Data Kamar"| P2
+    P2 -->|"Update Master Kamar"| D2
 
-    CUST --- UC_AUTH
-    CUST --- UC_PROFILE
-    CUST --- UC_BROWSE
-    CUST --- UC_BOOKING
-    CUST --- UC_TRACK
-    CUST --- UC_PAY
-    CUST --- UC_BUKTI
-    CUST --- UC_COUNTDOWN
-    CUST --- UC_REVIEW
+    %% Aliran Proses 3.0
+    CUST -->|"Pilih Kamar & Tgl Masuk"| P3
+    D2 -.->|"Kueri Ketersediaan"| P3
+    P3 -->|"Simpan Booking (pending)"| D3
+    ADMIN -->|"Verifikasi & Tagihan"| P3
 
-    GOOGLE --- UC_GOOGLE
-    UC_GOOGLE -.->|&laquo;extend&raquo;| UC_AUTH
+    %% Aliran Proses 4.0
+    CUST -->|"Bayar via Snap"| P4
+    P4 <-->|"Snap Token & Webhook Settlement"| MIDTRANS
+    P4 -->|"Simpan Lunas"| D4
+    P4 -->|"Update: dibayar"| D3
 
-    ADMIN --- UC_AUTH
-    ADMIN --- UC_KAMAR
-    ADMIN --- UC_VERIFY
-    ADMIN --- UC_INVOICE
-    ADMIN --- UC_FORWARD
-    ADMIN --- UC_PENGHUNI
-    ADMIN --- UC_TX
+    %% Aliran Proses 5.0
+    OWNER -->|"Konfirmasi Kesiapan Kamar"| P5
+    P5 -->|"Simpan Log Konfirmasi"| D5
+    P5 -->|"Update: SIAP_HUNI"| D3
 
-    OWNER --- UC_AUTH
-    OWNER --- UC_REVIEW_OWNER
-    OWNER --- UC_CONFIRM
-    OWNER --- UC_REPORT_FIN
-    OWNER --- UC_REPORT_OCC
-
-    MIDTRANS --- UC_SNAP
-    MIDTRANS --- UC_WEBHOOK
-
-    UC_BOOKING -.->|&laquo;include&raquo;| UC_AUTH
-    UC_PAY -.->|&laquo;include&raquo;| UC_SNAP
-    UC_COUNTDOWN -.->|&laquo;extend&raquo;| UC_EXTEND
-    UC_VERIFY -.->|&laquo;include&raquo;| UC_INVOICE
-    UC_WEBHOOK -.->|&laquo;include&raquo;| UC_TX
+    %% Aliran Proses 6.0
+    D3 -.->|"Baca Tgl Masuk & Masa Sewa"| P6
+    P6 -.->|"Live Countdown Sisa Sewa"| CUST
+    P6 -.->|"Laporan Okupansi & Keuangan"| ADMIN
+    P6 -.->|"Laporan Pendapatan Bersih"| OWNER
 ```
 
 ---
 
-## 3. Model Data Konseptual (*Conceptual Data Model - CDM*)
+## 3. DFD Level 2 (Dekomposisi Proses 3.0 Transaksi Pemesanan)
 
-CDM memetakan struktur data logis independen dari DBMS fisik:
+DFD Level 2 merinci alur transaksi reservasi kamar dari pemilihan kamar, input formulir, validasi admin, hingga penerbitan tagihan.
+
+```mermaid
+flowchart TD
+    classDef proc fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000;
+    classDef ds fill:#f8fafc,stroke:#000000,stroke-width:1px,color:#000000;
+    classDef ext fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000;
+
+    CUST["PENYEWA (CUSTOMER)"]:::ext
+    ADMIN["ADMIN (ADMINISTRATOR)"]:::ext
+
+    P31(("3.1 Pilih Kamar &<br>Cek Ketersediaan")):::proc
+    P32(("3.2 Input Data Sewa<br>& Tanggal Masuk")):::proc
+    P33(("3.3 Verifikasi Berkas<br>& Validasi Admin")):::proc
+    P34(("3.4 Penerbitan Tagihan<br>& Status Menunggu Bayar")):::proc
+
+    D2[("D2: rooms")]:::ds
+    D3[("D3: bookings")]:::ds
+
+    CUST -->|"1. Kueri Pilih Kamar"| P31
+    D2 -.->|"2. Status Ketersediaan (available)"| P31
+    P31 -->|"3. Kamar Terpilih"| P32
+    CUST -->|"4. Form Booking & Tgl Masuk"| P32
+    P32 -->|"5. Simpan (status: pending)"| D3
+
+    D3 -.->|"6. Data Booking Pending"| P33
+    ADMIN -->|"7. Aksi Verifikasi / Tolak"| P33
+    P33 -->|"8. Booking Terverifikasi"| P34
+    P34 -->|"9. Update (status: menunggu_pembayaran)"| D3
+    P34 -.->|"10. Notifikasi Tagihan & Tombol Bayar"| CUST
+```
+
+---
+
+## 4. Model Data Konseptual (*Conceptual Data Model - CDM*)
 
 ```mermaid
 erDiagram
@@ -211,9 +223,7 @@ erDiagram
 
 ---
 
-## 4. Model Data Fisik (*Physical Data Model - PDM / MySQL*)
-
-PDM memetakan skema nyata database MySQL pada Laravel Migration termasuk tipe data presisi, Primary Key (PK), Foreign Key (FK), dan Relasi:
+## 5. Model Data Fisik (*Physical Data Model - PDM / MySQL*)
 
 ```mermaid
 erDiagram
@@ -311,9 +321,11 @@ erDiagram
 
 ---
 
-## 5. File XML untuk Draw.io
-Semua diagram tersedia dalam format XML Draw.io siap pakai:
-- 📄 **[CDM_PDM_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/CDM_PDM_DIAGRAM.xml)** — Multi-Tab: Tab 1 (CDM) & Tab 2 (PDM MySQL).
-- 📄 **[USE_CASE_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/USE_CASE_DIAGRAM.xml)** — Use Case Diagram Lengkap.
-- 📄 **[CONTEXT_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/CONTEXT_DIAGRAM.xml)** — Diagram Konteks (DFD Level 0).
-- 📄 **[FLOW_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/FLOW_DIAGRAM.xml)** — Multi-Tab Master Diagram.
+## 6. Daftar File XML Draw.io Siap Pakai
+- 📄 **[DFD_LEVEL_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/DFD_LEVEL_DIAGRAM.xml)** — Multi-Tab DFD Lengkap:
+  - **Tab 1:** DFD Level 0 (Context Diagram)
+  - **Tab 2:** DFD Level 1 (6 Sub-Proses Utama & 5 Data Store)
+  - **Tab 3:** DFD Level 2 (Dekomposisi Proses 3.0 Reservasi)
+- 📄 **[CDM_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/CDM_DIAGRAM.xml)** — Conceptual Data Model (Format Tabel B&W).
+- 📄 **[CDM_PDM_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/CDM_PDM_DIAGRAM.xml)** — Multi-Tab CDM & PDM MySQL.
+- 📄 **[USE_CASE_DIAGRAM.xml](file:///c:/xampp/htdocs/Archofesa/USE_CASE_DIAGRAM.xml)** — Use Case Diagram.

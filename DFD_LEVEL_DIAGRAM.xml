@@ -1,0 +1,460 @@
+<mxfile host="app.diagrams.net" modified="2026-08-31T09:15:00.000Z" agent="Antigravity AI" version="21.0.0" type="device">
+  
+  <!-- ====================================================================== -->
+  <!-- TAB 1: DFD LEVEL 0 (DIAGRAM KONTEKS)                                   -->
+  <!-- ====================================================================== -->
+  <diagram id="tab_dfd_level0" name="1. DFD Level 0 (Konteks)">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- HEADER TITLE -->
+        <mxCell id="hdr_l0" value="&lt;b style='font-size:16px;'&gt;DFD LEVEL 0 (DIAGRAM KONTEKS) &amp;mdash; ARCHOFESA KOST&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;color:#333333;'&gt;Sistem Informasi Pengelolaan &amp;amp; Reservasi Kost &amp;mdash; Batasan Sistem &amp;amp; Entitas Luar&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1400" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- CENTRAL PROCESS 0.0 -->
+        <mxCell id="proc_0" value="&lt;b style='font-size:15px;'&gt;0.0&lt;/b&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;SISTEM INFORMASI&lt;br&gt;PENGELOLAAN &amp;amp; RESERVASI KOST&lt;br&gt;(ARCHOFESA KOST)&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:10px;color:#555555;'&gt;Aplikasi Web Terintegrasi&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="580" y="380" width="340" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- EXTERNAL ENTITIES -->
+        <mxCell id="ent_l0_cust" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;PENYEWA (CUSTOMER)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Calon &amp;amp; Penghuni Kos&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l0_admin" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;ADMINISTRATOR (ADMIN)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Pengelola Operasional Kos&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="150" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l0_owner" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;PEMILIK KOS (OWNER)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Pemilik Properti Kos&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="445" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l0_midtrans" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;PAYMENT GATEWAY (MIDTRANS)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Layanan Transaksi Digital&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="740" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l0_auth" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;GOOGLE OAUTH / FIREBASE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Autentikasi SSO Single Sign-On&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="740" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- FLOWS -->
+        <mxCell id="f_l0_c_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Input Customer]&lt;/b&gt;&lt;br&gt;&amp;bull; Registrasi/Login&lt;br&gt;&amp;bull; Pengajuan Booking &amp;amp; Tgl Masuk&lt;br&gt;&amp;bull; Update Profil &amp;amp; Telepon&lt;br&gt;&amp;bull; Pengajuan Perpanjangan Sewa&lt;br&gt;&amp;bull; Rating &amp;amp; Ulasan&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.3;entryX=0;entryY=0.2;" edge="1" parent="1" source="ent_l0_cust" target="proc_0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="173" />
+              <mxPoint x="430" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_c_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Output Customer]&lt;/b&gt;&lt;br&gt;&amp;bull; Katalog Kamar &amp;amp; Fasilitas&lt;br&gt;&amp;bull; Invoice Tagihan &amp;amp; Snap Token&lt;br&gt;&amp;bull; Status Tracking Realtime&lt;br&gt;&amp;bull; Bukti Reservasi Digital&lt;br&gt;&amp;bull; Live Countdown Sisa Sewa&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.5;entryX=1;entryY=0.7;" edge="1" parent="1" source="proc_0" target="ent_l0_cust">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="485" />
+              <mxPoint x="480" y="203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_a_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Input Admin]&lt;/b&gt;&lt;br&gt;&amp;bull; Master Kamar (CRUD/Harga/Foto)&lt;br&gt;&amp;bull; Verifikasi Booking &amp;amp; Tagihan&lt;br&gt;&amp;bull; Teruskan Booking ke Owner&lt;br&gt;&amp;bull; Update Jatuh Tempo Penghuni&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.3;entryX=1;entryY=0.2;" edge="1" parent="1" source="ent_l0_admin" target="proc_0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1070" y="173" />
+              <mxPoint x="1070" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_a_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Output Admin]&lt;/b&gt;&lt;br&gt;&amp;bull; Notifikasi Booking Baru Masuk&lt;br&gt;&amp;bull; Laporan Status Pembayaran&lt;br&gt;&amp;bull; Data Okupansi &amp;amp; Statistik&lt;br&gt;&amp;bull; Daftar Penghuni &amp;amp; Jatuh Tempo&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.7;" edge="1" parent="1" source="proc_0" target="ent_l0_admin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="485" />
+              <mxPoint x="1020" y="203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_o_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Input Owner]&lt;/b&gt;&lt;br&gt;&amp;bull; Konfirmasi Kesiapan Kamar (SIAP_HUNI)&lt;br&gt;&amp;bull; Catatan Kunci &amp;amp; Kamar Kos&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.3;entryX=1;entryY=0.6;" edge="1" parent="1" source="ent_l0_owner" target="proc_0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="468" />
+              <mxPoint x="1040" y="506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_o_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Output Owner]&lt;/b&gt;&lt;br&gt;&amp;bull; Notifikasi Booking Lunas Siap Huni&lt;br&gt;&amp;bull; Laporan Pendapatan Bersih&lt;br&gt;&amp;bull; Statistik Okupansi &amp;amp; Hunian&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.7;entryX=0;entryY=0.7;" edge="1" parent="1" source="proc_0" target="ent_l0_owner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="527" />
+              <mxPoint x="1060" y="498" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_m_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Request Transaksi]&lt;/b&gt;&lt;br&gt;&amp;bull; Order ID, Gross Amount, Detail Item&lt;br&gt;&amp;bull; Request Snap Token API&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.8;entryX=0;entryY=0.3;" edge="1" parent="1" source="proc_0" target="ent_l0_midtrans">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1070" y="548" />
+              <mxPoint x="1070" y="763" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_m_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Webhook Callback]&lt;/b&gt;&lt;br&gt;&amp;bull; Notifikasi Settlement/Cancel/Expire&lt;br&gt;&amp;bull; No. Referensi Transaksi&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.7;entryX=1;entryY=0.9;" edge="1" parent="1" source="ent_l0_midtrans" target="proc_0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="793" />
+              <mxPoint x="1020" y="569" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_g_in" value="&lt;b&gt;Permintaan Redirect OAuth SSO&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.8;entryX=1;entryY=0.3;" edge="1" parent="1" source="proc_0" target="ent_l0_auth">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="548" />
+              <mxPoint x="430" y="763" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="f_l0_g_out" value="&lt;b&gt;Token Akses &amp;amp; Data Profil (Email/Nama)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.7;entryX=0;entryY=0.9;" edge="1" parent="1" source="ent_l0_auth" target="proc_0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="793" />
+              <mxPoint x="480" y="569" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+
+  <!-- ====================================================================== -->
+  <!-- TAB 2: DFD LEVEL 1 (DEKOMPOSISI PROSES UTAMA)                          -->
+  <!-- ====================================================================== -->
+  <diagram id="tab_dfd_level1" name="2. DFD Level 1 (Proses Utama)">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- HEADER TITLE -->
+        <mxCell id="hdr_l1" value="&lt;b style='font-size:16px;'&gt;DFD LEVEL 1 &amp;mdash; DEKOMPOSISI PROSES UTAMA ARCHOFESA KOST&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;color:#333333;'&gt;Aliran Data Antara Entitas Luar, 6 Sub-Proses Utama, dan 5 Data Store Database&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1500" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- EXTERNAL ENTITIES (LEFT & RIGHT) -->
+        <mxCell id="ent_l1_cust" value="&lt;b&gt;PENYEWA&lt;br&gt;(CUSTOMER)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="140" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l1_admin" value="&lt;b&gt;ADMINISTRATOR&lt;br&gt;(ADMIN)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="140" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l1_owner" value="&lt;b&gt;PEMILIK KOS&lt;br&gt;(OWNER)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="700" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l1_midtrans" value="&lt;b&gt;MIDTRANS&lt;br&gt;(PAYMENT GATEWAY)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- PROCESSES (1.0 TO 6.0) -->
+        <!-- 1.0 Autentikasi -->
+        <mxCell id="p_1" value="&lt;b&gt;1.0&lt;/b&gt;&lt;br&gt;Manajemen&lt;br&gt;Autentikasi &amp;amp; Profil" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="340" y="130" width="150" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 2.0 Master Kamar -->
+        <mxCell id="p_2" value="&lt;b&gt;2.0&lt;/b&gt;&lt;br&gt;Manajemen Master&lt;br&gt;Data Kamar" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="130" width="150" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 3.0 Reservasi Booking -->
+        <mxCell id="p_3" value="&lt;b&gt;3.0&lt;/b&gt;&lt;br&gt;Transaksi Pemesanan&lt;br&gt;&amp;amp; Booking Kamar" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="380" width="170" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 4.0 Pembayaran -->
+        <mxCell id="p_4" value="&lt;b&gt;4.0&lt;/b&gt;&lt;br&gt;Pembayaran Online&lt;br&gt;&amp;amp; Webhook Gateway" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="685" width="170" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 5.0 Konfirmasi Owner -->
+        <mxCell id="p_5" value="&lt;b&gt;5.0&lt;/b&gt;&lt;br&gt;Konfirmasi Kamar&lt;br&gt;Siap Huni (Owner)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="685" width="170" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 6.0 Hunian & Monitoring -->
+        <mxCell id="p_6" value="&lt;b&gt;6.0&lt;/b&gt;&lt;br&gt;Monitoring Hunian,&lt;br&gt;Countdown &amp;amp; Laporan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="380" width="170" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- DATA STORES (D1 - D5) -->
+        <mxCell id="ds_users" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D1&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;users&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="150" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ds_rooms" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D2&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;rooms&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="270" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ds_bookings" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D3&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;bookings&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="410" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ds_payments" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D4&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;payments&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="715" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ds_konf" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D5&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;konfirmasi_owner&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="850" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- FLOW CONNECTORS LEVEL 1 -->
+        <!-- Customer -> 1.0 (Auth) -->
+        <mxCell id="f1_1" value="Data Akun &amp;amp; Profil" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l1_cust" target="p_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 1.0 -> D1 (users) -->
+        <mxCell id="f1_2" value="Simpan/Update Akun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_1" target="ds_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Admin -> 2.0 (Rooms) -->
+        <mxCell id="f1_3" value="CRUD Data Kamar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l1_admin" target="p_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 2.0 -> D2 (rooms) -->
+        <mxCell id="f1_4" value="Update Master Kamar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_2" target="ds_rooms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Customer -> 3.0 (Booking) -->
+        <mxCell id="f1_5" value="Pilih Kamar &amp;amp; Tgl Masuk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l1_cust" target="p_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- D2 -> 3.0 (Read room availability) -->
+        <mxCell id="f1_6" value="Info Kamar Tersedia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ds_rooms" target="p_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="535" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 3.0 -> D3 (bookings) -->
+        <mxCell id="f1_7" value="Simpan Booking (Pending)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_3" target="ds_bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Admin -> 3.0 (Verifikasi & Buat Tagihan) -->
+        <mxCell id="f1_8" value="Verifikasi &amp;amp; Terbitkan Tagihan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l1_admin" target="p_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1470" y="340" />
+              <mxPoint x="535" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Customer -> 4.0 (Bayar) -->
+        <mxCell id="f1_9" value="Bayar via Midtrans Snap" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l1_cust" target="p_4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="735" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 4.0 <-> Midtrans Gateway -->
+        <mxCell id="f1_10" value="Request Snap Token / Webhook Lunas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_4" target="ent_l1_midtrans">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 4.0 -> D4 (payments) & D3 (bookings) -->
+        <mxCell id="f1_11" value="Simpan Lunas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_4" target="ds_payments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f1_12" value="Update Status: Dibayar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_4" target="ds_bookings">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="685" />
+              <mxPoint x="650" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Owner -> 5.0 (Konfirmasi Siap Huni) -->
+        <mxCell id="f1_13" value="Konfirmasi Kesiapan Kamar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l1_owner" target="p_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 5.0 -> D5 (konfirmasi_owner) & D3 (bookings: siap_huni) -->
+        <mxCell id="f1_14" value="Simpan Log Konfirmasi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_5" target="ds_konf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1085" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f1_15" value="Update Status: SIAP_HUNI" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_5" target="ds_bookings">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="735" />
+              <mxPoint x="950" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 6.0 Hunian & Monitoring (Auto transition DIHUNI & Countdown) -->
+        <mxCell id="f1_16" value="Baca Status &amp;amp; Tgl Masuk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ds_bookings" target="p_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 6.0 -> Customer (Live Countdown) -->
+        <mxCell id="f1_17" value="Live Countdown Sisa Sewa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_6" target="ent_l1_cust">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1085" y="340" />
+              <mxPoint x="130" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 6.0 -> Admin & Owner (Laporan & Okupansi) -->
+        <mxCell id="f1_18" value="Laporan Okupansi &amp;amp; Keuangan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_6" target="ent_l1_admin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1470" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f1_19" value="Laporan Pendapatan Bersih" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_6" target="ent_l1_owner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1470" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+
+  <!-- ====================================================================== -->
+  <!-- TAB 3: DFD LEVEL 2 (PROSES 3.0 - RESERVASI & BOOKING)                 -->
+  <!-- ====================================================================== -->
+  <diagram id="tab_dfd_level2" name="3. DFD Level 2 (Proses 3.0 Reservasi)">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1000" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- HEADER TITLE -->
+        <mxCell id="hdr_l2" value="&lt;b style='font-size:16px;'&gt;DFD LEVEL 2 &amp;mdash; DEKOMPOSISI PROSES 3.0 (TRANSAKSI PEMESANAN &amp;amp; BOOKING)&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;color:#333333;'&gt;Rincian Alur Sub-Proses Pengajuan, Pengecekan Ketersediaan, Verifikasi Admin, dan Penerbitan Tagihan&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1400" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- EXTERNAL ENTITIES -->
+        <mxCell id="ent_l2_cust" value="&lt;b&gt;PENYEWA (CUSTOMER)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="160" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_l2_admin" value="&lt;b&gt;ADMINISTRATOR (ADMIN)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="160" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- SUB PROCESSES (3.1 - 3.4) -->
+        <mxCell id="p_31" value="&lt;b&gt;3.1&lt;/b&gt;&lt;br&gt;Pilih Kamar &amp;amp;&lt;br&gt;Cek Ketersediaan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="340" y="145" width="150" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p_32" value="&lt;b&gt;3.2&lt;/b&gt;&lt;br&gt;Input Data Sewa &amp;amp;&lt;br&gt;Tanggal Masuk" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="340" y="380" width="150" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p_33" value="&lt;b&gt;3.3&lt;/b&gt;&lt;br&gt;Verifikasi Berkas&lt;br&gt;&amp;amp; Validasi Admin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="145" width="150" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p_34" value="&lt;b&gt;3.4&lt;/b&gt;&lt;br&gt;Penerbitan Tagihan&lt;br&gt;&amp;amp; Status Pembayaran" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="380" width="150" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- DATA STORES -->
+        <mxCell id="ds_l2_rooms" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D2&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;rooms&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="170" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ds_l2_bookings" value="&lt;table border='1' cellpadding='3' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr&gt;&lt;td style='width:30px; background:#E5E5E5; font-weight:bold;'&gt;D3&lt;/td&gt;&lt;td style='background:#FFFFFF; font-weight:bold;'&gt;bookings&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="405" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- FLOWS LEVEL 2 -->
+        <!-- Customer -> 3.1 -->
+        <mxCell id="f2_1" value="Kueri Pilih Kamar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l2_cust" target="p_31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- D2 -> 3.1 -->
+        <mxCell id="f2_2" value="Status Ketersediaan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ds_l2_rooms" target="p_31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Customer -> 3.2 -->
+        <mxCell id="f2_3" value="Data Formulir Booking &amp;amp; Tgl Masuk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l2_cust" target="p_32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="425" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 3.2 -> D3 -->
+        <mxCell id="f2_4" value="Simpan Record Booking (status: pending)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_32" target="ds_l2_bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- D3 -> 3.3 (Admin reads pending bookings) -->
+        <mxCell id="f2_5" value="Data Booking Pending" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ds_l2_bookings" target="p_33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="270" />
+              <mxPoint x="1075" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Admin -> 3.3 -->
+        <mxCell id="f2_6" value="Aksi: Verifikasi / Tolak" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ent_l2_admin" target="p_33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 3.3 -> 3.4 (Trigger penerbitan tagihan) -->
+        <mxCell id="f2_7" value="Booking Terverifikasi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_33" target="p_34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 3.4 -> D3 (Update status: menunggu_pembayaran) -->
+        <mxCell id="f2_8" value="Update: menunggu_pembayaran" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_34" target="ds_l2_bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- 3.4 -> Customer (Kirim info tagihan) -->
+        <mxCell id="f2_9" value="Notifikasi Tagihan &amp;amp; Tombol Bayar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="p_34" target="ent_l2_cust">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1075" y="520" />
+              <mxPoint x="140" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+</mxfile>

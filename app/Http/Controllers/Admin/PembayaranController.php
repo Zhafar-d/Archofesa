@@ -31,6 +31,22 @@ class PembayaranController extends Controller
     {
         $payment->update(['status' => 'paid', 'paid_at' => now()]);
 
-        return redirect()->route('admin.pembayaran.index')->with('success', 'Pembayaran COD berhasil ditandai sebagai dibayar.');
+        // Update status booking juga jika ada
+        if ($payment->booking) {
+            $payment->booking->update(['payment_status' => 'paid']);
+        }
+
+        return redirect()->route('admin.pembayaran.index')->with('success', 'Pembayaran berhasil ditandai sebagai dibayar.');
+    }
+
+    /**
+     * Hapus data transaksi pembayaran (Aksi Delete Admin).
+     */
+    public function destroy(Payment $payment)
+    {
+        $id = $payment->id;
+        $payment->delete();
+
+        return redirect()->route('admin.pembayaran.index')->with('success', "Data pembayaran #{$id} berhasil dihapus.");
     }
 }

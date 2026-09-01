@@ -1,0 +1,181 @@
+<mxfile host="app.diagrams.net" modified="2026-08-29T15:05:00.000Z" agent="Antigravity AI" version="21.0.0" type="device">
+  <diagram id="archofesa_context_bw" name="Diagram Konteks ARCHOFESA (DFD Level 0)">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1100" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================== -->
+        <!-- HEADER TITLE (MINIMALIST B&W)              -->
+        <!-- ========================================== -->
+        <mxCell id="ctx_hdr" value="&lt;b style='font-size:16px;'&gt;DIAGRAM KONTEKS (CONTEXT DIAGRAM / DFD LEVEL 0) &amp;mdash; ARCHOFESA KOST&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;color:#333333;'&gt;Sistem Informasi Pengelolaan &amp;amp; Reservasi Kost &amp;mdash; Batasan Sistem, Entitas Luar, Arus Data Masuk &amp;amp; Keluar&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1400" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CENTRAL PROCESS: 0.0 SISTEM ARCHOFESA      -->
+        <!-- ========================================== -->
+        <mxCell id="proc_sys" value="&lt;b style='font-size:15px;'&gt;0.0&lt;/b&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;SISTEM INFORMASI&lt;br&gt;PENGELOLAAN &amp;amp; RESERVASI KOST&lt;br&gt;(ARCHOFESA KOST)&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:10px;color:#555555;'&gt;Aplikasi Web Laravel 12&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;align=center;" vertex="1" parent="1">
+          <mxGeometry x="580" y="380" width="340" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- EXTERNAL ENTITIES                          -->
+        <!-- ========================================== -->
+
+        <!-- 1. PENYEWA (CUSTOMER) -->
+        <mxCell id="ent_cust" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;PENYEWA (CUSTOMER)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Calon &amp;amp; Penghuni Kos&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- 2. ADMINISTRATOR (ADMIN) -->
+        <mxCell id="ent_admin" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;ADMINISTRATOR (ADMIN)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Pengelola Operasional Kos&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="150" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- 3. PEMILIK KOS (OWNER) -->
+        <mxCell id="ent_owner" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;PEMILIK KOS (OWNER)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Pemilik Properti Kos&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="445" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- 4. MIDTRANS PAYMENT GATEWAY -->
+        <mxCell id="ent_midtrans" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;PAYMENT GATEWAY (MIDTRANS)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Layanan Transaksi Digital&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="740" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- 5. GOOGLE OAUTH / AUTH SERVICE -->
+        <mxCell id="ent_auth" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:11px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#E5E5E5; font-weight:bold; font-size:12px;'&gt;&lt;td&gt;GOOGLE OAUTH / FIREBASE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-size:10px; color:#333333;'&gt;Autentikasi Single Sign-On (SSO)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="740" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- DATA FLOWS: CUSTOMER <-> SYSTEM            -->
+        <!-- ========================================== -->
+
+        <!-- Flow C1: Customer -> System (Input Data) -->
+        <mxCell id="flow_c_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Input Customer]&lt;/b&gt;&lt;br&gt;&amp;bull; Data Registrasi &amp;amp; Login&lt;br&gt;&amp;bull; Pengajuan Booking &amp;amp; Tgl Masuk&lt;br&gt;&amp;bull; Update Profil &amp;amp; No. WhatsApp&lt;br&gt;&amp;bull; Pengajuan Perpanjangan Sewa&lt;br&gt;&amp;bull; Ulasan &amp;amp; Rating Kamar&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.3;entryX=0;entryY=0.2;" edge="1" parent="1" source="ent_cust" target="proc_sys">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="173" />
+              <mxPoint x="430" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow C2: System -> Customer (Output Info) -->
+        <mxCell id="flow_c_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Output ke Customer]&lt;/b&gt;&lt;br&gt;&amp;bull; Katalog Kamar &amp;amp; Fasilitas&lt;br&gt;&amp;bull; Invoice Tagihan &amp;amp; Batas Waktu Bayar&lt;br&gt;&amp;bull; Status Booking Real-Time&lt;br&gt;&amp;bull; Bukti Reservasi Digital&lt;br&gt;&amp;bull; Live Countdown Sisa Masa Sewa&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.5;entryX=1;entryY=0.7;" edge="1" parent="1" source="proc_sys" target="ent_cust">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="485" />
+              <mxPoint x="480" y="203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- DATA FLOWS: ADMIN <-> SYSTEM               -->
+        <!-- ========================================== -->
+
+        <!-- Flow A1: Admin -> System (Input Data) -->
+        <mxCell id="flow_a_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Input Admin]&lt;/b&gt;&lt;br&gt;&amp;bull; Kelola Kamar (Harga/Fasilitas/Foto)&lt;br&gt;&amp;bull; Verifikasi / Penolakan Booking&lt;br&gt;&amp;bull; Penerbitan Tagihan Pembayaran&lt;br&gt;&amp;bull; Teruskan Booking Lunas ke Owner&lt;br&gt;&amp;bull; Update Jatuh Tempo Penghuni&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.3;entryX=1;entryY=0.2;" edge="1" parent="1" source="ent_admin" target="proc_sys">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1070" y="173" />
+              <mxPoint x="1070" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow A2: System -> Admin (Output Info) -->
+        <mxCell id="flow_a_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Output ke Admin]&lt;/b&gt;&lt;br&gt;&amp;bull; Notifikasi Booking Baru Masuk&lt;br&gt;&amp;bull; Laporan Status Pembayaran&lt;br&gt;&amp;bull; Data Okupansi &amp;amp; Statistik Kamar&lt;br&gt;&amp;bull; Daftar Penghuni &amp;amp; Jatuh Tempo&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.7;" edge="1" parent="1" source="proc_sys" target="ent_admin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="485" />
+              <mxPoint x="1020" y="203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- DATA FLOWS: OWNER <-> SYSTEM               -->
+        <!-- ========================================== -->
+
+        <!-- Flow O1: Owner -> System (Input) -->
+        <mxCell id="flow_o_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Input Owner]&lt;/b&gt;&lt;br&gt;&amp;bull; Konfirmasi Kesiapan Kamar (SIAP_HUNI)&lt;br&gt;&amp;bull; Catatan Persiapan Fisik &amp;amp; Kunci Kamar&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.3;entryX=1;entryY=0.6;" edge="1" parent="1" source="ent_owner" target="proc_sys">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="468" />
+              <mxPoint x="1040" y="506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow O2: System -> Owner (Output) -->
+        <mxCell id="flow_o_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Output ke Owner]&lt;/b&gt;&lt;br&gt;&amp;bull; Notifikasi Booking Lunas Siap Huni&lt;br&gt;&amp;bull; Laporan Pendapatan &amp;amp; Transaksi Bersih&lt;br&gt;&amp;bull; Laporan Okupansi &amp;amp; Tingkat Hunian&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.7;entryX=0;entryY=0.7;" edge="1" parent="1" source="proc_sys" target="ent_owner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="527" />
+              <mxPoint x="1060" y="498" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- DATA FLOWS: MIDTRANS <-> SYSTEM            -->
+        <!-- ========================================== -->
+
+        <!-- Flow M1: System -> Midtrans (Request Payment) -->
+        <mxCell id="flow_m_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Request Transaksi]&lt;/b&gt;&lt;br&gt;&amp;bull; Parameter Order ID &amp;amp; Gross Amount&lt;br&gt;&amp;bull; Customer Details &amp;amp; Item Info&lt;br&gt;&amp;bull; Request Snap Token API&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.8;entryX=0;entryY=0.3;" edge="1" parent="1" source="proc_sys" target="ent_midtrans">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1070" y="548" />
+              <mxPoint x="1070" y="763" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow M2: Midtrans -> System (Webhook Status) -->
+        <mxCell id="flow_m_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Webhook Callback]&lt;/b&gt;&lt;br&gt;&amp;bull; Webhook Settlement/Cancel/Expire&lt;br&gt;&amp;bull; Data Referensi Pembayaran &amp;amp; Metode&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.7;entryX=1;entryY=0.9;" edge="1" parent="1" source="ent_midtrans" target="proc_sys">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="793" />
+              <mxPoint x="1020" y="569" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- DATA FLOWS: GOOGLE AUTH <-> SYSTEM         -->
+        <!-- ========================================== -->
+
+        <!-- Flow G1: System -> Google (Auth Request) -->
+        <mxCell id="flow_g_in" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Request OAuth]&lt;/b&gt;&lt;br&gt;&amp;bull; Permintaan Redirect Autentikasi SSO&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=0;exitY=0.8;entryX=1;entryY=0.3;" edge="1" parent="1" source="proc_sys" target="ent_auth">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="548" />
+              <mxPoint x="430" y="763" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow G2: Google -> System (Auth Token/Data) -->
+        <mxCell id="flow_g_out" value="&lt;div style='text-align:left; line-height:1.4;'&gt;&lt;b&gt;[Response OAuth]&lt;/b&gt;&lt;br&gt;&amp;bull; Token Akses &amp;amp; Data Profil (Email/Nama)&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=6;html=1;strokeColor=#000000;strokeWidth=1.5;dashed=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;labelBorderColor=#000000;exitX=1;exitY=0.7;entryX=0;entryY=0.9;" edge="1" parent="1" source="ent_auth" target="proc_sys">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="793" />
+              <mxPoint x="480" y="569" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- LEGEND TABLE (B&W)                         -->
+        <!-- ========================================== -->
+        <mxCell id="legend_box" value="&lt;table border='1' cellpadding='4' cellspacing='0' style='width:100%; border-collapse:collapse; font-size:10px; text-align:center; border:1px solid #000000;'&gt;&lt;tr style='background:#F2F2F2; font-weight:bold;'&gt;&lt;td&gt;KETERANGAN NOTASI DFD LEVEL 0 (DIAGRAM KONTEKS)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;mdash;&amp;mdash;&amp;rarr; Garis Solid:&lt;/b&gt; Arus Data Masuk (Input ke Sistem) &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; &lt;b&gt;- - - -&amp;rarr; Garis Putus-putus:&lt;/b&gt; Arus Informasi Keluar (Output dari Sistem)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="580" y="640" width="340" height="50" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

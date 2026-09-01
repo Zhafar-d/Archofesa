@@ -136,21 +136,49 @@ class PublicController extends Controller
 
     public function storeLogin(Request $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email'    => ['required', 'email'],
+        $loginInput = trim((string) $request->input('login', $request->input('email')));
+
+        $request->validate([
             'password' => ['required', 'string'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (empty($loginInput)) {
+            return back()->withErrors(['login' => 'Email atau nomor telepon harus diisi.'])->withInput();
+        }
+
+        // Deteksi apakah input berupa email atau nomor telepon
+        $isEmail = filter_var($loginInput, FILTER_VALIDATE_EMAIL);
+
+        $user = null;
+        if ($isEmail) {
+            $user = User::where('email', $loginInput)->first();
+        } else {
+            // Bersihkan format nomor telepon agar cocok dengan berbagai variasi input (08... / 628... / +628...)
+            $cleanedPhone = preg_replace('/[^0-9]/', '', $loginInput);
+            $localPhone = str_starts_with($cleanedPhone, '62') ? '0' . substr($cleanedPhone, 2) : $cleanedPhone;
+            $intlPhone = str_starts_with($cleanedPhone, '0') ? '62' . substr($cleanedPhone, 1) : $cleanedPhone;
+
+            $user = User::where(function ($q) use ($loginInput, $cleanedPhone, $localPhone, $intlPhone) {
+                $q->where('phone', $loginInput)
+                  ->orWhere('phone', $cleanedPhone)
+                  ->orWhere('phone', $localPhone)
+                  ->orWhere('phone', $intlPhone)
+                  ->orWhere('phone', '+' . $intlPhone);
+            })->first();
+        }
+
+        if ($user && Hash::check($request->password, $user->password)) {
+            Auth::login($user, $request->boolean('remember'));
             $request->session()->regenerate();
-            return redirect()->intended(match (Auth::user()->role ?? 'user') {
+
+            return redirect()->intended(match ($user->role ?? 'user') {
                 'admin' => route('admin.dashboard'),
                 'owner' => route('owner.dashboard'),
                 default => route('dashboard'),
             });
         }
 
-        return back()->withErrors(['email' => 'Email atau password salah.'])->onlyInput('email');
+        return back()->withErrors(['login' => 'Email / Nomor Telepon atau kata sandi tidak cocok.'])->withInput();
     }
 
     public function register()
@@ -164,10 +192,11 @@ class PublicController extends Controller
         $validated = $request->validate([
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'email', 'max:255', Rule::unique('users')],
+            'phone'    => ['nullable', 'string', 'max:20'],
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        $user = \App\Models\User::create([...$validated, 'role' => 'user']);
+        $user = User::create([...$validated, 'role' => 'user']);
         Auth::login($user);
         return redirect()->route('dashboard');
     }

@@ -82,6 +82,25 @@
                         <p class="mt-2 text-xs text-[#6b7280]">Tanggal keluar terkunci secara otomatis 1 bulan dari tanggal masuk.</p>
                     </div>
                 </div>
+            </section>
+
+            <section class="rounded-[28px] border border-[#e7e2d8] bg-[#faf8f5] p-6 lg:p-8">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xl font-semibold text-[#1f2937]">3. Nomor WhatsApp Kontak</h2>
+                    <span class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-bold text-red-700">
+                        *Wajib Diisi
+                    </span>
+                </div>
+                <p class="text-xs text-[#6b7280] mb-4">Nomor WhatsApp aktif wajib diisi agar sistem bot kami dapat mengirimkan tagihan resmi, notifikasi konfirmasi pemilik, dan link perpanjangan sewa otomatis.</p>
+                
+                <div class="max-w-md">
+                    <label class="block text-sm font-medium text-[#374151] mb-2" for="phone">Nomor WhatsApp / Telepon Aktif</label>
+                    <input id="phone" type="tel" name="phone" value="{{ old('phone', auth()->user()->phone ?? '') }}" placeholder="Contoh: 088237299199" class="w-full rounded-2xl border border-[#e7e2d8] bg-white px-4 py-3 text-[#1f2937] focus:border-[#c9a227] focus:outline-none focus:ring-1 focus:ring-[#c9a227]" required>
+                    @error('phone')
+                        <p class="mt-1 text-xs font-medium text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="mt-8 flex justify-end">
                     <button type="submit" class="rounded-full bg-[#c9a227] px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-[#c9a227]/20 transition hover:bg-[#b68d1f]">
                         Ajukan Booking
