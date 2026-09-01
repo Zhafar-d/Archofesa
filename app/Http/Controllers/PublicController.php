@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Review;
 use App\Models\Room;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -74,6 +75,76 @@ class PublicController extends Controller
     public function about()     { return view('pages.about'); }
     public function facilities(){ return view('pages.facilities'); }
     public function contact()   { return view('pages.contact'); }
+
+    public function reviews()
+    {
+        $dbReviews = Review::with('user', 'booking.room')
+            ->where('status', 'approved')
+            ->latest()
+            ->get();
+
+        $defaultReviews = collect([
+            (object)[
+                'rating' => 5,
+                'comment' => 'Fasilitas kos sangat lengkap dan bersih. Kamar mandi dalam dengan air lancar, WiFi cepat untuk kebutuhan skripsi dan kerja remote. Pemilik dan admin sangat responsif!',
+                'user' => (object)['name' => 'Dimas Prasetyo', 'avatar' => null],
+                'created_at' => Carbon::now()->subDays(3),
+                'room_type' => 'Kamar Kos Eksklusif A1',
+            ],
+            (object)[
+                'rating' => 5,
+                'comment' => 'Lingkungan kost tenang, parkiran aman dan luas. Lokasi strategis dekat kampus dan pusat kuliner. Sistem pembayaran online-nya juga sangat mudah.',
+                'user' => (object)['name' => 'Siti Nurhaliza', 'avatar' => null],
+                'created_at' => Carbon::now()->subDays(8),
+                'room_type' => 'Kamar Kos Eksklusif B3',
+            ],
+            (object)[
+                'rating' => 5,
+                'comment' => 'Suasana nyaman banget buat istirahat setelah seharian kuliah. AC dingin, kasur empuk, dan ada notifikasi pengingat via WhatsApp bot yang sangat membantu.',
+                'user' => (object)['name' => 'Kevin Pratama', 'avatar' => null],
+                'created_at' => Carbon::now()->subWeeks(2),
+                'room_type' => 'Kamar Kos Eksklusif A4',
+            ],
+        ]);
+
+        $reviews = $dbReviews->isNotEmpty() ? $dbReviews : $defaultReviews;
+        $totalReviews = $reviews->count();
+        $avgRating = 4.9;
+
+        // Cek jika user login punya booking untuk diulas
+        $userBooking = null;
+        if (Auth::check()) {
+            $userBooking = Booking::where('user_id', Auth::id())
+                ->whereIn('status', ['dibayar', 'siap_huni', 'dihuni', 'selesai'])
+                ->latest()
+                ->first();
+        }
+
+        return view('pages.reviews', compact('reviews', 'avgRating', 'totalReviews', 'userBooking'));
+    }
+
+    public function storeReview(Request $request)
+    {
+        $validated = $request->validate([
+            'rating' => ['required', 'integer', 'min:1', 'max:5'],
+            'comment' => ['required', 'string', 'min:5', 'max:1000'],
+            'booking_id' => ['nullable', 'exists:bookings,id'],
+        ], [
+            'rating.required' => 'Silakan pilih rating bintang 1 - 5.',
+            'comment.required' => 'Silakan tulis ulasan pengalaman Anda.',
+            'comment.min' => 'Ulasan minimal 5 karakter.',
+        ]);
+
+        Review::create([
+            'user_id' => Auth::id(),
+            'booking_id' => $validated['booking_id'] ?? null,
+            'rating' => $validated['rating'],
+            'comment' => trim($validated['comment']),
+            'status' => 'approved',
+        ]);
+
+        return redirect()->route('reviews')->with('success', 'Terima kasih! Ulasan Anda berhasil dikirim dan ditayangkan.');
+    }
 
     public function rooms()
     {

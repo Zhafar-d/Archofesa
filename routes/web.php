@@ -121,6 +121,8 @@ Route::get('/facilities',     [PublicController::class, 'facilities'])->name('fa
 Route::get('/rooms',          [PublicController::class, 'rooms'])->name('rooms');
 Route::get('/room-detail',    [PublicController::class, 'roomDetail'])->name('room-detail');
 Route::get('/gallery',        [PublicController::class, 'gallery'])->name('gallery');
+Route::get('/reviews',        [PublicController::class, 'reviews'])->name('reviews');
+Route::post('/reviews',       [PublicController::class, 'storeReview'])->name('reviews.store')->middleware('auth');
 Route::get('/contact',        [PublicController::class, 'contact'])->name('contact');
 
 // ── Auth ────────────────────────────────────────────────────────────────────

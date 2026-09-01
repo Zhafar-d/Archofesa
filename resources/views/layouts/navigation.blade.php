@@ -20,6 +20,9 @@
                 <a href="{{ route('gallery') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition {{ request()->routeIs('gallery') ? 'border-[#c9a227] text-gray-900 font-semibold' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
                     Galeri
                 </a>
+                <a href="{{ route('reviews') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition {{ request()->routeIs('reviews') ? 'border-[#c9a227] text-gray-900 font-semibold' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
+                    Ulasan
+                </a>
                 <a href="{{ route('facilities') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition {{ request()->routeIs('facilities') ? 'border-[#c9a227] text-gray-900 font-semibold' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
                     Fasilitas
                 </a>
@@ -113,6 +116,9 @@
             </a>
             <a href="{{ route('gallery') }}" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition {{ request()->routeIs('gallery') ? 'border-[#c9a227] text-[#c9a227] bg-[#c9a227]/5 font-semibold' : 'border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300' }}">
                 Galeri
+            </a>
+            <a href="{{ route('reviews') }}" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition {{ request()->routeIs('reviews') ? 'border-[#c9a227] text-[#c9a227] bg-[#c9a227]/5 font-semibold' : 'border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300' }}">
+                Ulasan
             </a>
             <a href="{{ route('facilities') }}" class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition {{ request()->routeIs('facilities') ? 'border-[#c9a227] text-[#c9a227] bg-[#c9a227]/5 font-semibold' : 'border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300' }}">
                 Fasilitas
