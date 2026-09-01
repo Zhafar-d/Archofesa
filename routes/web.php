@@ -11,6 +11,7 @@ use App\Http\Controllers\Customer\DashboardController as CustomerDashboardContro
 use App\Http\Controllers\FirebaseAuthController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
+use App\Http\Controllers\Owner\KamarController as OwnerKamarController;
 use App\Http\Controllers\Owner\KonfirmasiController;
 use App\Http\Controllers\Owner\LaporanController;
 use App\Http\Controllers\PaymentController;
@@ -173,8 +174,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('/bookings/{booking}/confirm-to-owner',       [AdminBookingController::class, 'confirmToOwner'])->name('bookings.confirm-to-owner');
     Route::post('/bookings/{booking}/confirm-ready-to-occupy',[AdminBookingController::class, 'confirmReadyToOccupy'])->name('bookings.confirm-ready-to-occupy');
 
-    Route::resource('kamar', AdminKamarController::class)->parameters(['kamar' => 'room']);
-    Route::resource('pembayaran', AdminPembayaranController::class)->only(['index', 'destroy']);
+    Route::resource('pembayaran', AdminPembayaranController::class)->parameters(['pembayaran' => 'payment'])->only(['index', 'destroy']);
     Route::post('/pembayaran/{payment}/mark-paid',            [AdminPembayaranController::class, 'markPaid'])->name('pembayaran.mark-paid');
     Route::resource('penghuni', AdminPenghuniController::class)->only(['index', 'destroy']);
     Route::put('/penghuni/{booking}/update-due-date',         [AdminPenghuniController::class, 'updateDueDate'])->name('penghuni.update-due-date');
@@ -186,6 +186,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->group(function () {
     Route::get('/dashboard',            [OwnerDashboardController::class, 'index'])->name('dashboard');
     Route::get('/chat',                 [ChatController::class, 'ownerChat'])->name('chat');
+    Route::resource('kamar',            OwnerKamarController::class)->parameters(['kamar' => 'room']);
     Route::get('/konfirmasi',           [KonfirmasiController::class, 'index'])->name('konfirmasi.index');
     Route::post('/konfirmasi/{booking}',[KonfirmasiController::class, 'confirm'])->name('konfirmasi.confirm');
     Route::post('/konfirmasi/{booking}/reject', [KonfirmasiController::class, 'reject'])->name('konfirmasi.reject');

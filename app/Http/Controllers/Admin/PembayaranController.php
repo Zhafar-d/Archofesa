@@ -27,8 +27,9 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.index', compact('payments', 'status', 'method', 'summary'));
     }
 
-    public function markPaid(Payment $payment)
+    public function markPaid(Request $request, $id)
     {
+        $payment = Payment::findOrFail($id);
         $payment->update(['status' => 'paid', 'paid_at' => now()]);
 
         // Update status booking juga jika ada
@@ -42,11 +43,12 @@ class PembayaranController extends Controller
     /**
      * Hapus data transaksi pembayaran (Aksi Delete Admin).
      */
-    public function destroy(Payment $payment)
+    public function destroy($id)
     {
-        $id = $payment->id;
+        $payment = Payment::findOrFail($id);
+        $paymentId = $payment->id;
         $payment->delete();
 
-        return redirect()->route('admin.pembayaran.index')->with('success', "Data pembayaran #{$id} berhasil dihapus.");
+        return redirect()->route('admin.pembayaran.index')->with('success', "Data pembayaran #{$paymentId} berhasil dihapus dari sistem.");
     }
 }
