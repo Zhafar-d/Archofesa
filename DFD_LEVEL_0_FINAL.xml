@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2026-09-01T23:35:00.000Z" agent="Antigravity DFD Architect" version="21.0.0" type="device">
-  <diagram id="dfd_level_0_archofesa" name="DFD Level 0 - Sistem Informasi ARCHOFESA KOST">
-    <mxGraphModel dx="2600" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1800" background="#FFFFFF" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-09-02T08:30:00.000Z" agent="Antigravity Standard DFD Architect" version="21.0.0" type="device">
+  <diagram id="dfd_level_0_perfect" name="DFD Level 0 Standar Akademis - ARCHOFESA KOST">
+    <mxGraphModel dx="2800" dy="1900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1800" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -9,241 +9,258 @@
         <!-- HEADER DOKUMEN & JUDUL UTAMA                              -->
         <!-- ========================================================= -->
         <mxCell id="hdr_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#0284C7;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="100" y="40" width="2200" height="90" as="geometry" />
+          <mxGeometry x="80" y="40" width="2240" height="90" as="geometry" />
         </mxCell>
         <mxCell id="hdr_title" value="DATA FLOW DIAGRAM (DFD) LEVEL 0 - SISTEM INFORMASI ARCHOFESA KOST" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#F8FAFC;spacingLeft=25;" vertex="1" parent="1">
-          <mxGeometry x="110" y="52" width="1200" height="35" as="geometry" />
+          <mxGeometry x="90" y="52" width="1300" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="hdr_sub" value="Dekomposisi 6 Proses Utama, 4 Entitas Luar (Penyewa, Pemilik, Admin, Gateway), dan 6 Data Store (users, rooms, bookings, konfirmasi, payments, reviews)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=0;fontColor=#94A3B8;spacingLeft=25;" vertex="1" parent="1">
-          <mxGeometry x="110" y="85" width="1400" height="25" as="geometry" />
-        </mxCell>
-
-        <!-- ========================================================= -->
-        <!-- ENTITAS LUAR (EXTERNAL ENTITIES - KIRI & KANAN)           -->
-        <!-- ========================================================= -->
-
-        <!-- E1: PENYEWA (CUSTOMER) - Kiri Atas -->
-        <mxCell id="ent_penyewa" value="&lt;b&gt;ENTITAS LUAR&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 15px;'&gt;👤 PENYEWA&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Customer/Penghuni)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#475569;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="100" y="360" width="220" height="110" as="geometry" />
-        </mxCell>
-
-        <!-- E2: PEMILIK KOS (OWNER) - Kiri Bawah -->
-        <mxCell id="ent_owner" value="&lt;b&gt;ENTITAS LUAR&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 15px;'&gt;👑 PEMILIK KOS&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Owner Property)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#475569;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="100" y="860" width="220" height="110" as="geometry" />
-        </mxCell>
-
-        <!-- E3: ADMINISTRATOR (ADMIN) - Kanan Atas -->
-        <mxCell id="ent_admin" value="&lt;b&gt;ENTITAS LUAR&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 15px;'&gt;⚙️ ADMINISTRATOR&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Pengelola Operasional)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#475569;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="2080" y="360" width="220" height="110" as="geometry" />
-        </mxCell>
-
-        <!-- E4: MIDTRANS & FONNTE (GATEWAY) - Kanan Bawah -->
-        <mxCell id="ent_midtrans" value="&lt;b&gt;SISTEM EKSTERNAL&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 14px;'&gt;🌐 MIDTRANS &amp;amp; WA BOT&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Payment &amp;amp; Fonnte WA)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#475569;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="2080" y="860" width="220" height="110" as="geometry" />
+        <mxCell id="hdr_sub" value="Sesuai Kaidah Akademis Analisis &amp; Perancangan Sistem (Yourdon / DeMarco): Seluruh Aliran Data Wajib Melalui Proses (Tidak Ada Entitas ke Data Store Langsung)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=0;fontColor=#94A3B8;spacingLeft=25;" vertex="1" parent="1">
+          <mxGeometry x="90" y="85" width="1500" height="25" as="geometry" />
         </mxCell>
 
         <!-- ========================================================= -->
-        <!-- DATA STORES (PENYIMPANAN DATA - BAGIAN TENGAH PUSAT)      -->
+        <!-- KOLOM 1: ENTITAS LUAR (EXTERNAL ENTITIES - SISI KIRI)     -->
         <!-- ========================================================= -->
 
-        <mxCell id="ds_users" value="&lt;b&gt;D1&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;users&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Data Akun, No WA, Role)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="240" width="380" height="40" as="geometry" />
+        <!-- E1: PENYEWA (CUSTOMER) -->
+        <mxCell id="ent_penyewa" value="&lt;b&gt;ENTITAS LUAR&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 15px;'&gt;👤 PENYEWA&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Customer / Calon Penghuni)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="210" height="130" as="geometry" />
         </mxCell>
 
-        <mxCell id="ds_rooms" value="&lt;b&gt;D2&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;rooms&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Data Kamar, Harga, Status Hunian)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="440" width="380" height="40" as="geometry" />
+        <!-- E2: PEMILIK KOS (OWNER) -->
+        <mxCell id="ent_owner" value="&lt;b&gt;ENTITAS LUAR&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 15px;'&gt;👑 PEMILIK KOS&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Owner Properti Kos)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="210" height="130" as="geometry" />
         </mxCell>
 
-        <mxCell id="ds_bookings" value="&lt;b&gt;D3&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;bookings&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Transaksi Sewa &amp;amp; Tgl Masuk)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="640" width="380" height="40" as="geometry" />
-        </mxCell>
-
-        <mxCell id="ds_konf" value="&lt;b&gt;D4&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;konfirmasi_owner&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Verifikasi Approval Owner)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="840" width="380" height="40" as="geometry" />
-        </mxCell>
-
-        <mxCell id="ds_payments" value="&lt;b&gt;D5&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;payments&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Invoice, Midtrans Order &amp;amp; Lunas)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="1040" width="380" height="40" as="geometry" />
-        </mxCell>
-
-        <mxCell id="ds_reviews" value="&lt;b&gt;D6&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;reviews&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Rating 1-5 &amp;amp; Testimoni Penghuni)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontColor=#0f172a;align=left;spacingLeft=15;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="1240" width="380" height="40" as="geometry" />
+        <!-- E3: ADMINISTRATOR (ADMIN) -->
+        <mxCell id="ent_admin" value="&lt;b&gt;ENTITAS LUAR&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 15px;'&gt;⚙️ ADMINISTRATOR&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Pengelola Operasional &amp; Bot)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1040" width="210" height="130" as="geometry" />
         </mxCell>
 
         <!-- ========================================================= -->
-        <!-- PROSES-PROSES UTAMA (LEVEL 0 PROCESSES 1.0 s/d 6.0)       -->
+        <!-- KOLOM 2: PROSES-PROSES UTAMA (PROCESSES 1.0 s/d 6.0)      -->
         <!-- ========================================================= -->
 
-        <!-- PROSES 1.0: Autentikasi & Akun -->
-        <mxCell id="proc_1" value="&lt;b&gt;1.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Autentikasi &amp;amp;&lt;br&gt;Kelola Akun&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="200" width="160" height="120" as="geometry" />
+        <!-- PROSES 1.0 -->
+        <mxCell id="p1" value="&lt;b&gt;1.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Autentikasi &amp;amp;&lt;br&gt;Kelola Akun&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#0369A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="170" width="160" height="120" as="geometry" />
         </mxCell>
 
-        <!-- PROSES 2.0: Manajemen Data Kamar -->
-        <mxCell id="proc_2" value="&lt;b&gt;2.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Manajemen&lt;br&gt;Data Kamar&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="400" width="160" height="120" as="geometry" />
+        <!-- PROSES 2.0 -->
+        <mxCell id="p2" value="&lt;b&gt;2.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Manajemen&lt;br&gt;Data Kamar&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#0369A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="370" width="160" height="120" as="geometry" />
         </mxCell>
 
-        <!-- PROSES 3.0: Pemesanan Kamar (Booking) -->
-        <mxCell id="proc_3" value="&lt;b&gt;3.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Pemesanan&lt;br&gt;Kamar (Booking)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="600" width="160" height="120" as="geometry" />
+        <!-- PROSES 3.0 -->
+        <mxCell id="p3" value="&lt;b&gt;3.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Pemesanan&lt;br&gt;Kamar (Booking)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#0369A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="570" width="160" height="120" as="geometry" />
         </mxCell>
 
-        <!-- PROSES 4.0: Verifikasi & Konfirmasi Owner -->
-        <mxCell id="proc_4" value="&lt;b&gt;4.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Verifikasi &amp;amp;&lt;br&gt;Konfirmasi Owner&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1680" y="600" width="160" height="120" as="geometry" />
+        <!-- PROSES 4.0 -->
+        <mxCell id="p4" value="&lt;b&gt;4.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Verifikasi &amp;amp;&lt;br&gt;Konfirmasi Owner&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#0369A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="770" width="160" height="120" as="geometry" />
         </mxCell>
 
-        <!-- PROSES 5.0: Pembayaran & Midtrans Gateway -->
-        <mxCell id="proc_5" value="&lt;b&gt;5.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Pembayaran &amp;amp;&lt;br&gt;Gateway Midtrans&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1680" y="900" width="160" height="120" as="geometry" />
+        <!-- PROSES 5.0 -->
+        <mxCell id="p5" value="&lt;b&gt;5.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Pembayaran &amp;amp;&lt;br&gt;Gateway Midtrans&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#0369A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="970" width="160" height="120" as="geometry" />
         </mxCell>
 
-        <!-- PROSES 6.0: Ulasan & Kepuasan Penghuni -->
-        <mxCell id="proc_6" value="&lt;b&gt;6.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Manajemen Ulasan&lt;br&gt;&amp;amp; Rating Kost&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0369a1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="1100" width="160" height="120" as="geometry" />
+        <!-- PROSES 6.0 -->
+        <mxCell id="p6" value="&lt;b&gt;6.0&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 13px;'&gt;Manajemen Ulasan&lt;br&gt;&amp;amp; Rating Kost&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=#0369A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1170" width="160" height="120" as="geometry" />
         </mxCell>
 
         <!-- ========================================================= -->
-        <!-- ARUS DATA (DATA FLOWS - PANAH BERLABEL)                   -->
+        <!-- KOLOM 3: DATA STORES (PENYIMPANAN DATA PERSISTEN)        -->
         <!-- ========================================================= -->
 
-        <!-- Arus 1: Penyewa -> 1.0 (Data Registrasi & Login) -->
-        <mxCell id="f_u_p1" value="Form Registrasi / Login (Google, Email, No WA)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="proc_1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ds_users" value="&lt;b&gt;D1&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;users&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Data Akun, No WA, Role)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0F172A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="210" width="400" height="40" as="geometry" />
         </mxCell>
 
-        <!-- Arus 2: 1.0 -> Penyewa (Status Akun & Token Sesi) -->
-        <mxCell id="f_p1_u" value="Status Verifikasi &amp; Hak Akses Dashboard" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_1" target="ent_penyewa">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ds_rooms" value="&lt;b&gt;D2&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;rooms&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Katalog Kamar, Harga, Status Hunian)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0F172A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="410" width="400" height="40" as="geometry" />
         </mxCell>
 
-        <!-- Arus 3: 1.0 <-> D1 users -->
-        <mxCell id="f_p1_d1" value="Simpan/Validasi Akun" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_1" target="ds_users">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ds_bookings" value="&lt;b&gt;D3&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;bookings&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Transaksi Sewa, Tgl Masuk, Status)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0F172A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="610" width="400" height="40" as="geometry" />
         </mxCell>
 
-        <!-- Arus 4: Owner -> 2.0 (Input & Kelola Kamar) -->
-        <mxCell id="f_o_p2" value="Data Kamar, Tipe, Harga, Fasilitas" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_owner" target="proc_2">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ds_konf" value="&lt;b&gt;D4&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;konfirmasi_owner&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Log Persetujuan Kesiapan Kamar)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0F172A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="810" width="400" height="40" as="geometry" />
         </mxCell>
 
-        <!-- Arus 5: 2.0 -> D2 rooms -->
-        <mxCell id="f_p2_d2" value="Update Data &amp; Status Kamar" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_2" target="ds_rooms">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ds_payments" value="&lt;b&gt;D5&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;payments&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Invoice, Midtrans Order ID &amp;amp; Lunas)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0F172A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1010" width="400" height="40" as="geometry" />
         </mxCell>
 
-        <!-- Arus 6: Penyewa -> 3.0 (Permohonan Booking) -->
-        <mxCell id="f_u_p3" value="Pilih Kamar, Tgl Masuk, Kontak WA" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="proc_3">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ds_reviews" value="&lt;b&gt;D6&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;reviews&lt;/b&gt; &lt;span style='font-size:10px; color:#64748b;'&gt;(Ulasan, Bintang 1-5, &amp;amp; Testimoni)&lt;/span&gt;" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0F172A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1210" width="400" height="40" as="geometry" />
         </mxCell>
 
-        <!-- Arus 7: 3.0 -> D3 bookings -->
-        <mxCell id="f_p3_d3" value="Simpan Transaksi Booking Baru" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_3" target="ds_bookings">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- ========================================================= -->
+        <!-- KOLOM 4: SISTEM EKSTERNAL (GATEWAY - SISI KANAN)          -->
+        <!-- ========================================================= -->
+
+        <!-- E4: MIDTRANS PAYMENT GATEWAY -->
+        <mxCell id="ent_midtrans" value="&lt;b&gt;SISTEM EKSTERNAL&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 14px;'&gt;💳 MIDTRANS&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(Payment Gateway API)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1980" y="860" width="220" height="110" as="geometry" />
         </mxCell>
 
-        <!-- Arus 8: 3.0 -> Penyewa (Invoice & Status Booking) -->
-        <mxCell id="f_p3_u" value="Bukti Booking &amp; Rincian Sewa" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.9;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_3" target="ent_penyewa">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- E5: FONNTE WHATSAPP GATEWAY -->
+        <mxCell id="ent_fonnte" value="&lt;b&gt;SISTEM EKSTERNAL&lt;/b&gt;&lt;br&gt;&lt;font style='font-size: 14px;'&gt;📱 FONNTE WA BOT&lt;/font&gt;&lt;br&gt;&lt;span style='font-size:10px; color:#94a3b8;'&gt;(WhatsApp Notification API)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1980" y="1040" width="220" height="110" as="geometry" />
         </mxCell>
 
-        <!-- Arus 9: D3 bookings -> 4.0 (Pengajuan Menunggu Approval) -->
-        <mxCell id="f_d3_p4" value="Data Booking Pending" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ds_bookings" target="proc_4">
+        <!-- ========================================================= -->
+        <!-- ALIRAN DATA MASUK & KELUAR (100% MELALUI PROSES)          -->
+        <!-- ========================================================= -->
+
+        <!-- PROSES 1.0 (Akun) -->
+        <mxCell id="f_penyewa_p1" value="Form Registrasi / Login (Google, Email, No WA)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="p1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Arus 10: Owner -> 4.0 (Keputusan Setuju / Tolak) -->
-        <mxCell id="f_o_p4" value="Persetujuan Kesiapan Kamar (Approve/Reject)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_owner" target="proc_4">
+        <mxCell id="f_p1_penyewa" value="Status Verifikasi &amp; Hak Akses Dashboard" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="p1" target="ent_penyewa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p1_d1" value="Simpan / Validasi Akun Pengguna" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p1" target="ds_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_admin_p1" value="Kelola &amp; Validasi Data Akun Penghuni" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#475569;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.2;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_admin" target="p1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="210" y="1000" />
-              <mxPoint x="1760" y="1000" />
+              <mxPoint x="122" y="272" />
             </Array>
           </mxGeometry>
         </mxCell>
 
-        <!-- Arus 11: 4.0 -> D4 konfirmasi_owner (Simpan Log Konfirmasi) -->
-        <mxCell id="f_p4_d4" value="Simpan Status Konfirmasi" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_4" target="ds_konf">
+        <!-- PROSES 2.0 (Kamar) -->
+        <mxCell id="f_owner_p2" value="Input / Update Data Kamar (Foto, Tarif, Fasilitas)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_owner" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p2_d2" value="Simpan &amp; Perbarui Status Kamar" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p2" target="ds_rooms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p2_penyewa" value="Katalog &amp; Informasi Ketersediaan Kamar" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0;" edge="1" parent="1" source="p2" target="ent_penyewa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p2_owner" value="Laporan Tingkat Keterisian (Occupancy)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;" edge="1" parent="1" source="p2" target="ent_owner">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Arus 12: 4.0 -> E4 WA Bot (Notifikasi Otomatis ke Penyewa) -->
-        <mxCell id="f_p4_wa" value="Trigger WA Bot (Booking Disetujui/Ditolak)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_4" target="ent_midtrans">
+        <!-- PROSES 3.0 (Booking) -->
+        <mxCell id="f_penyewa_p3" value="Pilih Kamar, Tgl Masuk, &amp; Durasi Sewa" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="p3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Arus 13: Penyewa -> 5.0 (Bayar Sewa Midtrans) -->
-        <mxCell id="f_u_p5" value="Pilih Metode Pembayaran (QRIS, VA, Transfer)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="proc_5">
+        <mxCell id="f_p3_penyewa" value="Bukti Pengajuan Booking &amp; Rincian Sewa" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=0.8;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="p3" target="ent_penyewa">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="210" y="760" />
-              <mxPoint x="1560" y="760" />
-              <mxPoint x="1560" y="960" />
+              <mxPoint x="480" y="654" />
+              <mxPoint x="248" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f_d2_p3" value="Cek Ketersediaan Kamar" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ds_rooms" target="p3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="442" />
+              <mxPoint x="708" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f_p3_d3" value="Simpan Transaksi Booking Baru" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p3" target="ds_bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- PROSES 4.0 (Konfirmasi Owner) -->
+        <mxCell id="f_d3_p4" value="Ambil Data Booking Pending" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ds_bookings" target="p4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="720" />
+              <mxPoint x="708" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f_owner_p4" value="Persetujuan Kesiapan Kamar (Setuju / Tolak)" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_owner" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p4_d4" value="Simpan Riwayat Konfirmasi" style="endArrow=classic;html=1;strokeColor=#0284c7;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p4" target="ds_konf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p4_fonnte" value="Trigger Notifikasi WhatsApp (Booking Disetujui/Ditolak)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="p4" target="ent_fonnte">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1600" y="854" />
+              <mxPoint x="1600" y="1073" />
             </Array>
           </mxGeometry>
         </mxCell>
 
-        <!-- Arus 14: 5.0 <-> Midtrans (Snap Token & Webhook Callback) -->
-        <mxCell id="f_p5_mid" value="Request Snap Token &amp; Webhook Status Lunas" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_5" target="ent_midtrans">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Arus 15: 5.0 -> D5 payments (Catat Pembayaran Lunas) -->
-        <mxCell id="f_p5_d5" value="Simpan Data Pembayaran &amp; Order ID" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_5" target="ds_payments">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Arus 16: Admin <-> Sistem (Monitoring & Verifikasi Data) -->
-        <mxCell id="f_adm_d1" value="Kelola Data Penghuni &amp; Pengingat WA" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#475569;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_admin" target="ds_users">
+        <!-- PROSES 5.0 (Pembayaran) -->
+        <mxCell id="f_penyewa_p5" value="Instruksi Bayar (Pilih QRIS, VA, Transfer)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="p5">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1540" y="393" />
-              <mxPoint x="1540" y="260" />
+              <mxPoint x="164" y="994" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- Arus 17: Admin <- D5 payments (Rekap Keuangan) -->
-        <mxCell id="f_adm_d5" value="Laporan Rekapitulasi Pembayaran" style="endArrow=classic;html=1;strokeColor=#475569;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" edge="1" parent="1" source="ds_payments" target="ent_admin">
+        <mxCell id="f_p5_midtrans" value="Request Snap Token &amp; Info Tagihan" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p5" target="ent_midtrans">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1940" y="1072" />
-              <mxPoint x="1940" y="448" />
+              <mxPoint x="850" y="1006" />
+              <mxPoint x="850" y="915" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- Arus 18: Penyewa -> 6.0 (Kirim Rating & Ulasan) -->
-        <mxCell id="f_u_p6" value="Form Bintang (1-5) &amp; Ulasan Pengalaman" style="endArrow=classic;html=1;strokeColor=#9333ea;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="proc_6">
+        <mxCell id="f_midtrans_p5" value="Webhook Callback Status Lunas (Settlement)" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_midtrans" target="p5">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="210" y="1160" />
+              <mxPoint x="1800" y="948" />
+              <mxPoint x="1800" y="1054" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- Arus 19: 6.0 -> D6 reviews (Simpan Testimoni) -->
-        <mxCell id="f_p6_d6" value="Simpan Ulasan Terverifikasi" style="endArrow=classic;html=1;strokeColor=#9333ea;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_6" target="ds_reviews">
+        <mxCell id="f_p5_d5" value="Simpan Data Pembayaran &amp; Order ID" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p5" target="ds_payments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p5_penyewa" value="Bukti Pembayaran Lunas &amp; Invoice Digital" style="endArrow=classic;html=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="p5" target="ent_penyewa">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="1030" />
+              <mxPoint x="206" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f_p5_admin" value="Laporan Rekapitulasi Keuangan &amp; Transaksi Lunas" style="endArrow=classic;html=1;strokeColor=#475569;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="p5" target="ent_admin">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Arus 20: D6 reviews -> Penyewa (Tampilkan Testimoni Publik) -->
-        <mxCell id="f_d6_u" value="Feed Testimoni &amp; Grade Kost (4.9/5.0)" style="endArrow=classic;html=1;strokeColor=#9333ea;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=0.2;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ds_reviews" target="ent_penyewa">
+        <!-- PROSES 6.0 (Ulasan) -->
+        <mxCell id="f_penyewa_p6" value="Form Bintang (1-5) &amp; Ulasan Pengalaman" style="endArrow=classic;html=1;strokeColor=#9333ea;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_penyewa" target="p6">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="740" y="1272" />
-              <mxPoint x="740" y="1340" />
-              <mxPoint x="144" y="1340" />
+              <mxPoint x="122" y="1206" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f_p6_d6" value="Simpan Ulasan Terverifikasi" style="endArrow=classic;html=1;strokeColor=#9333ea;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p6" target="ds_reviews">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f_p6_penyewa" value="Feed Testimoni Publik &amp; Skor Grade Kost (4.9/5.0)" style="endArrow=classic;html=1;strokeColor=#9333ea;strokeWidth=1.5;fontSize=10;fontColor=#0f172a;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" edge="1" parent="1" source="p6" target="ent_penyewa">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="1266" />
+              <mxPoint x="40" y="424" />
             </Array>
           </mxGeometry>
         </mxCell>
 
         <!-- ========================================================= -->
-        <!-- KOTAK LEGENDA STANDAR DFD LEVEL 0                         -->
+        <!-- KOTAK LEGENDA KARDINALITAS & STANDAR DFD                  -->
         <!-- ========================================================= -->
-        <mxCell id="box_legend" value="&lt;b style='font-size:12px; color:#0f172a;'&gt;📌 PENJELASAN SIMBOL &amp;amp; ALUR DFD LEVEL 0 ARCHOFESA KOST:&lt;/b&gt;&lt;br&gt;&lt;br&gt;&#10;1. &lt;b&gt;Entitas Luar (External Entity - Persegi):&lt;/b&gt; Pihak luar yang berinteraksi langsung (Penyewa, Pemilik Kos, Administrator, serta Gateway Midtrans &amp;amp; WA Bot).&lt;br&gt;&#10;2. &lt;b&gt;Proses (Process - Lingkaran/Oval):&lt;/b&gt; Pengolahan data transaksi (1.0 Kelola Akun ➔ 2.0 Kelola Kamar ➔ 3.0 Booking ➔ 4.0 Konfirmasi ➔ 5.0 Pembayaran ➔ 6.0 Ulasan).&lt;br&gt;&#10;3. &lt;b&gt;Penyimpanan Data (Data Store - Garis Paralel D1-D6):&lt;/b&gt; Tabel database tempat menyimpan dan mengambil data secara persisten.&lt;br&gt;&#10;4. &lt;b&gt;Aliran Data (Data Flow - Garis Panah):&lt;/b&gt; Menggambarkan data spesifik yang masuk (input) ke proses atau dihasilkan (output) menuju entitas luar." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=15;fontColor=#334155;" vertex="1" parent="1">
-          <mxGeometry x="100" y="1420" width="2200" height="150" as="geometry" />
+        <mxCell id="box_legend" value="&lt;b style='font-size:12px; color:#0f172a;'&gt;📌 PEDOMAN STANDAR DFD LEVEL 0 ARCHOFESA KOST (SESUAI KAIDAH REKAYASA PERANGKAT LUNAK):&lt;/b&gt;&lt;br&gt;&lt;br&gt;&#10;1. &lt;b&gt;Aturan Entitas Luar (External Entity - Kotak Gelap):&lt;/b&gt; Entitas Luar (Penyewa, Owner, Admin, Gateway) &lt;i&gt;TIDAK PERNAH&lt;/i&gt; boleh terhubung langsung ke Data Store. Seluruh interaksi data wajib diproses oleh lingkaran proses.&lt;br&gt;&#10;2. &lt;b&gt;Aturan Proses (Process - Lingkaran Biru 1.0 s/d 6.0):&lt;/b&gt; Setiap proses menerima aliran data masukan (Input), mengakses Data Store terkait, dan menghasilkan keluaran data (Output).&lt;br&gt;&#10;3. &lt;b&gt;Aturan Penyimpanan Data (Data Store - Garis Paralel D1-D6):&lt;/b&gt; Hanya melayani operasi Baca/Tulis dari dan ke Proses internal sistem.&lt;br&gt;&#10;4. &lt;b&gt;Aliran Data (Data Flow - Panah Berlabel):&lt;/b&gt; Mengalirkan paket informasi spesifik (Formulir, Token, Webhook, Laporan, Notifikasi WhatsApp)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=15;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1360" width="2240" height="150" as="geometry" />
         </mxCell>
 
       </root>
